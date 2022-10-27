@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img"/>
+    <qresource prefix="/">
+        <file>img/library.label.png</file>
+    </qresource>
+</RCC>
