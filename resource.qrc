@@ -2,5 +2,10 @@
     <qresource prefix="/img"/>
     <qresource prefix="/">
         <file>img/library.label.png</file>
+        <file>img/menu.label1.png</file>
+        <file>img/menu.label2.png</file>
+        <file>img/homescreen-label.PNG</file>
+        <file>img/menu.label3.png</file>
+        <file>img/menu.label4.png</file>
     </qresource>
 </RCC>

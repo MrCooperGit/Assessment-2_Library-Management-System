@@ -18,7 +18,10 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_login_clicked();
+
 private:
     Ui::LoginWindow *ui;
+
 };
 #endif // LOGINWINDOW_H
