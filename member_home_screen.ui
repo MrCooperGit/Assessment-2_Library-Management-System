@@ -93,7 +93,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Add New Book</string>
+    <string>View Catalogue</string>
    </property>
   </widget>
   <widget class="QPushButton" name="button_img_1">
@@ -125,7 +125,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Modify Catalogue</string>
+    <string>Your Items</string>
    </property>
   </widget>
  </widget>

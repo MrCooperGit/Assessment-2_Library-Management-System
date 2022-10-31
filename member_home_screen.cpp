@@ -1,6 +1,8 @@
 #include "member_home_screen.h"
 #include "ui_member_home_screen.h"
 #include <QPixmap>
+#include "member_catalogue_screen.h"
+#include "your_items_screen.h"
 
 member_home_screen::member_home_screen(QWidget *parent) :
     QWidget(parent),
@@ -8,7 +10,7 @@ member_home_screen::member_home_screen(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setStyleSheet("background-color: white;");
-    this->setWindowTitle("Admin Home Screen");
+    this->setWindowTitle("Member Home");
 
     //Setting button images
     QIcon button1_icon("://img/menu.label1.png");
@@ -29,3 +31,34 @@ member_home_screen::~member_home_screen()
 {
     delete ui;
 }
+
+//Home screen navigation to other screens
+
+//Navigate to member catalogue screen / view catalogue screen
+void member_home_screen::on_pushButton_clicked()
+{
+    member_catalogue_screen *_member_catalogue_screen = new member_catalogue_screen;
+    _member_catalogue_screen->show();
+    close();
+}
+void member_home_screen::on_button_img_1_clicked()
+{
+    member_catalogue_screen *_member_catalogue_screen = new member_catalogue_screen;
+    _member_catalogue_screen->show();
+    close();
+}
+
+//Navigate to your items screen
+void member_home_screen::on_pushButton_2_clicked()
+{
+    your_items_screen *_your_items_screen = new your_items_screen;
+    _your_items_screen->show();
+    close();
+}
+void member_home_screen::on_button_img_2_clicked()
+{
+    your_items_screen *_your_items_screen = new your_items_screen;
+    _your_items_screen->show();
+    close();
+}
+
