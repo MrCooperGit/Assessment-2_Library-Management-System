@@ -65,6 +65,7 @@ void admin_home_screen::on_pushButton_2_clicked()
     admin_catalogue_screen *_admin_catalogue_screen = new admin_catalogue_screen;
     _admin_catalogue_screen->show();
     close();
+
 }
 void admin_home_screen::on_button_img_2_clicked()
 {

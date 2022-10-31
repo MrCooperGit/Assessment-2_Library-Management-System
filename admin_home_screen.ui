@@ -1,7 +1,9 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>admin_home_screen</class>
  <widget class="QWidget" name="admin_home_screen">
+
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -193,6 +195,10 @@
    </property>
   </widget>
  </widget>
+
  <resources/>
+
+ <pixmapfunction/>
+
  <connections/>
 </ui>
