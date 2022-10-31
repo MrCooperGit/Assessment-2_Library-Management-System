@@ -3,8 +3,8 @@
 //#include "file_functions.h"
 //#include "admin_home_screen.h"
 //#include "library.h"
-//#include "member_home_screen.h"
-//#include "admin_home_screen.h"
+#include "member_home_screen.h"
+#include "admin_home_screen.h"
 
 
 #include <QFile>
@@ -37,7 +37,6 @@ void LoginWindow::on_pushButton_login_clicked()
     QString loginEmail = ui->lineEdit_username->text();
     QString loginPassword = ui->lineEdit_password->text();
 
-    //read_file(":/csv/users.csv"); //function call not working
     QFile file("C:/Users/Shaun Cooper/Documents/Qt Projects/Assessment-2_Library-Management-System/users.csv");
     if(!file.exists())
     {
@@ -49,34 +48,39 @@ void LoginWindow::on_pushButton_login_clicked()
         qCritical() << file.errorString();
     }
 
-    //QTextStream stream(&file);
+    QTextStream stream(&file);
     QString email, password;
     while (!file.atEnd()){
         QString line = file.readLine(); //place line into string to edit line with append
+        email.clear();
+        password.clear();
         email.append(line.split(',').first()); //separates line into array of strings using ','. Chooses the first string as variable
         password.append(line.split(',').last());
         qInfo() << email << password ;
-       // email.remove(0,2); //need to remove '\n' from beginning of string. Starting at index 0 for 2 occassions
-        //password.remove(0,2);
+        if (password.contains('\n')) password.chop(1);   //removes '\n' from password
         qInfo() << loginEmail << email << loginPassword << password; //just to check if email and password are selected properly
         int validateEmail, validatePass;
         validateEmail = loginEmail.compare(email);
         validatePass = loginPassword.compare(password);
         qInfo() << validateEmail << validatePass;
-//        if(loginEmail.contains(email) && loginPassword.contains(password)){
-//            file.close();
-//            Admin_Home_Screen *admin_home_screen = new Admin_Home_Screen;
-//            admin_home_screen->show();
-//            close();
-//            return;
-//        }
+        if(validateEmail==0 && validatePass==0){
+            file.close();
+            if(line.contains("admin")){
+                admin_home_screen *admin_home_screen = new class admin_home_screen;
+                admin_home_screen->show();
+                close();
+                return;
+            }else {
+                member_home_screen *member_home_screen = new class member_home_screen;
+                member_home_screen->show();
+                close();
+                return;
+            }
+        }
     }
 
     file.close();
     ui->lineEdit_password->clear();
-//    Admin_Home_Screen *admin_home_screen = new Admin_Home_Screen;
-//    admin_home_screen->show();
-//    close();
 
     QMessageBox::warning(this, "Warning", "Sorry, your email/username or password is incorrect! Try again.");
 }
