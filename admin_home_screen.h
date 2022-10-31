@@ -14,6 +14,8 @@ class admin_home_screen : public QWidget
     Q_OBJECT
 
 public:
+    explicit admin_home_screen(QWidget *parent = nullptr);
+    ~admin_home_screen();
 
 private slots:
     void on_pushButton_clicked();
