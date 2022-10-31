@@ -56,6 +56,7 @@ set(PROJECT_SOURCES
         member_book_order_screen.cpp
         member_book_order_screen.ui
         resource.qrc
+        classes.h
         library.h
         library.cpp
         file_functions.h

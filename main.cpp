@@ -1,5 +1,4 @@
 #include "loginWindow.h"
-
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>

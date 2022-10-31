@@ -4,19 +4,37 @@
 #include <QWidget>
 
 namespace Ui {
-class Admin_Home_Screen;
+
+class admin_home_screen;
 }
 
-class Admin_Home_Screen : public QWidget
+class admin_home_screen : public QWidget
+
 {
     Q_OBJECT
 
 public:
-    explicit Admin_Home_Screen(QWidget *parent = nullptr);
-    ~Admin_Home_Screen();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_button_img_1_clicked();
+
+    void on_pushButton_2_clicked();
+
+    void on_button_img_2_clicked();
+
+    void on_pushButton_3_clicked();
+
+    void on_button_img_3_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_button_img_4_clicked();
 
 private:
-    Ui::Admin_Home_Screen *ui;
+    Ui::admin_home_screen *ui;
+
 };
 
 #endif // ADMIN_HOME_SCREEN_H
