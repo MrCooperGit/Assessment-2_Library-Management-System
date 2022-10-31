@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>member_catalogue_screen</class>
+ <widget class="QWidget" name="member_catalogue_screen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,6 +13,19 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>260</y>
+     <width>201</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Member catalogue / view catalogue</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -1,6 +1,15 @@
 #include "add_new_member_screen.h"
+#include "ui_add_new_member_screen.h"
 
-Add_New_Member_Screen::Add_New_Member_Screen()
+add_new_member_screen::add_new_member_screen(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::add_new_member_screen)
 {
+    ui->setupUi(this);
+    this->setWindowTitle("Add New Member");
+}
 
+add_new_member_screen::~add_new_member_screen()
+{
+    delete ui;
 }
