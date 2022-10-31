@@ -56,6 +56,11 @@ set(PROJECT_SOURCES
         member_book_order_screen.cpp
         member_book_order_screen.ui
         resource.qrc
+        library.h
+        library.cpp
+        file_functions.h
+        file_functions.cpp
+
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

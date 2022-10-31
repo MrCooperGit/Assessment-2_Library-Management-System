@@ -2,5 +2,8 @@
     <qresource prefix="/img"/>
     <qresource prefix="/">
         <file>img/library.label.png</file>
+        <file>csv/users.csv</file>
+        <file>csv/items.csv</file>
     </qresource>
+    <qresource prefix="/.csv"/>
 </RCC>
