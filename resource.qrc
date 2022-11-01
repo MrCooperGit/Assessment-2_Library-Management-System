@@ -7,8 +7,11 @@
         <file>img/homescreen-label.PNG</file>
         <file>img/menu.label3.png</file>
         <file>img/menu.label4.png</file>
-        <file>csv/users.csv</file>
-        <file>csv/items.csv</file>
+        <file>img/addBook.label.png</file>
+        <file>img/addMember.label.png</file>
+        <file>img/editBook.label.png</file>
+        <file>img/editMember.label.png</file>
+        <file>img/yourItems.label.png</file>
     </qresource>
     <qresource prefix="/.csv"/>
 </RCC>

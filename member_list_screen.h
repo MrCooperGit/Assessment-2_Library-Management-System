@@ -15,6 +15,13 @@ public:
     explicit member_list_screen(QWidget *parent = nullptr);
     ~member_list_screen();
 
+private slots:
+    void on_pushButton_home_clicked();
+
+    void on_pushButton_modifyCatalogue_clicked();
+
+    void on_pushButton_addNewMember_clicked();
+
 private:
     Ui::member_list_screen *ui;
 };

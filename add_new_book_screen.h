@@ -15,6 +15,11 @@ public:
     explicit add_new_book_screen(QWidget *parent = nullptr);
     ~add_new_book_screen();
 
+private slots:
+    void on_pushButton_home_clicked();
+
+    void on_pushButton_modifyCatalogue_clicked();
+
 private:
     Ui::add_new_book_screen *ui;
 };
