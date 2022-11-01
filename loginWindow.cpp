@@ -1,7 +1,7 @@
 #include "loginWindow.h"
 #include "./ui_loginWindow.h"
-#include "file_functions.h"
-#include "admin_home_screen.h"
+//#include "file_functions.h"
+//#include "admin_home_screen.h"
 //#include "library.h"
 #include "member_home_screen.h"
 #include "admin_home_screen.h"
@@ -37,8 +37,7 @@ void LoginWindow::on_pushButton_login_clicked()
     QString loginEmail = ui->lineEdit_username->text();
     QString loginPassword = ui->lineEdit_password->text();
 
-    //read_file(":/csv/users.csv"); //function call not working
-    QFile file("C:/Users/Shaun Cooper/Documents/Qt Projects/Assessment-2_Library-Management-System/users.csv");
+    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv");
     if(!file.exists())
     {
         qCritical() << "File not found";
@@ -49,34 +48,39 @@ void LoginWindow::on_pushButton_login_clicked()
         qCritical() << file.errorString();
     }
 
-    //QTextStream stream(&file);
+    QTextStream stream(&file);
     QString email, password;
     while (!file.atEnd()){
         QString line = file.readLine(); //place line into string to edit line with append
+        email.clear();
+        password.clear();
         email.append(line.split(',').first()); //separates line into array of strings using ','. Chooses the first string as variable
         password.append(line.split(',').last());
         qInfo() << email << password ;
-       // email.remove(0,2); //need to remove '\n' from beginning of string. Starting at index 0 for 2 occassions
-        //password.remove(0,2);
+        if (password.contains('\n')) password.chop(1);   //removes '\n' from password
         qInfo() << loginEmail << email << loginPassword << password; //just to check if email and password are selected properly
         int validateEmail, validatePass;
         validateEmail = loginEmail.compare(email);
         validatePass = loginPassword.compare(password);
         qInfo() << validateEmail << validatePass;
-//        if(loginEmail.contains(email) && loginPassword.contains(password)){
-//            file.close();
-//            Admin_Home_Screen *admin_home_screen = new Admin_Home_Screen;
-//            admin_home_screen->show();
-//            close();
-//            return;
-//        }
+        if(validateEmail==0 && validatePass==0){
+            file.close();
+            if(line.contains("admin")){
+                admin_home_screen *admin_home_screen = new class admin_home_screen;
+                admin_home_screen->show();
+                close();
+                return;
+            }else {
+                member_home_screen *member_home_screen = new class member_home_screen;
+                member_home_screen->show();
+                close();
+                return;
+            }
+        }
     }
 
     file.close();
     ui->lineEdit_password->clear();
-//    Admin_Home_Screen *admin_home_screen = new Admin_Home_Screen;
-//    admin_home_screen->show();
-//    close();
 
     QMessageBox::warning(this, "Warning", "Sorry, your email/username or password is incorrect! Try again.");
 }
@@ -84,6 +88,8 @@ void LoginWindow::on_pushButton_login_clicked()
 
 void LoginWindow::on_pushButton_register_clicked()
 {
+
+
     QString email = ui->lineEdit_email->text(); //String variables which store the text in the lineEdit boxes
     QString firstName = ui->lineEdit_firstName->text();
     QString lastName = ui->lineEdit_lastName->text();
@@ -97,7 +103,7 @@ void LoginWindow::on_pushButton_register_clicked()
     }
 
 
-    QFile file("C:/Users/Shaun Cooper/Documents/Qt Projects/Assessment-2_Library-Management-System/users.csv"); //create variable for the file
+    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv"); //create variable for the file
     //also note that you cannot open .qrc files in write modes. Read-only.
     if(!file.open(QIODevice::Append)) //open file in append which adds new data to end
     {
@@ -118,14 +124,13 @@ void LoginWindow::on_pushButton_register_clicked()
 
 
 
-void LoginWindow::on_pushButton_login_clicked()
-{
-    //Open home screen (member/admin) for testing (member home screen header file is included)
-    member_home_screen *_member_home_screen = new member_home_screen;
-    _member_home_screen->show();
-    close();
-    //admin_home_screen *_admin_home_screen = new admin_home_screen;
-    //_admin_home_screen->show();
-    //close();
-}
-
+//void LoginWindow::on_pushButton_login_clicked()
+//{
+//    //Open home screen (member/admin) for testing (member home screen header file is included)
+//    member_home_screen *_member_home_screen = new member_home_screen;
+//    _member_home_screen->show();
+//    close();
+//    //admin_home_screen *_admin_home_screen = new admin_home_screen;
+//    //_admin_home_screen->show();
+//    //close();
+//}
