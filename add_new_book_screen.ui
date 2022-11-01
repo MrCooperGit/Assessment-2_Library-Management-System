@@ -118,10 +118,10 @@ color: #3366CC;
   <widget class="QLabel" name="label_heading">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>325</x>
      <y>10</y>
-     <width>120</width>
-     <height>120</height>
+     <width>150</width>
+     <height>150</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -181,7 +181,7 @@ border-radius: 4px;</string>
     <string>Submit</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>290</x>

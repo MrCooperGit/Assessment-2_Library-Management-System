@@ -8,6 +8,7 @@
 #include "member_catalogue_screen.h"
 #include "member_list_screen.h"
 #include "add_new_book_screen.h"
+#include "add_new_member_screen.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -142,7 +143,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_book_screen *ptr = new add_new_book_screen;
+    add_new_member_screen *ptr = new add_new_member_screen;
     ptr->show();
     close();
 }

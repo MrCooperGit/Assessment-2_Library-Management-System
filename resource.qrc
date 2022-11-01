@@ -12,6 +12,14 @@
         <file>img/editBook.label.png</file>
         <file>img/editMember.label.png</file>
         <file>img/yourItems.label.png</file>
+        <file>img/FofRing.book.jpg</file>
+        <file>img/Hobbit.book.jpg</file>
+        <file>img/itFeltLikeAKiss.book.jpg</file>
+        <file>img/LYONS.book.jpg</file>
+        <file>img/Mockingbird.book.jpg</file>
+        <file>img/starsight.book.jpg</file>
+        <file>img/wandOfAvalon.book.jpg</file>
+        <file>img/zeroHour.book.jpg</file>
     </qresource>
     <qresource prefix="/.csv"/>
 </RCC>
