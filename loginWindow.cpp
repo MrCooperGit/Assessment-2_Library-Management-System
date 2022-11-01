@@ -1,11 +1,14 @@
 #include "loginWindow.h"
 #include "./ui_loginWindow.h"
 //#include "file_functions.h"
-//#include "admin_home_screen.h"
-//#include "library.h"
+#include "admin_home_screen.h"
 #include "member_home_screen.h"
 #include "admin_home_screen.h"
-
+#include "admin_catalogue_screen.h"
+#include "member_catalogue_screen.h"
+#include "member_list_screen.h"
+#include "add_new_book_screen.h"
+#include "add_new_member_screen.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -19,6 +22,7 @@ LoginWindow::LoginWindow(QWidget *parent)
     , ui(new Ui::LoginWindow)
 {
     ui->setupUi(this);
+
     QPixmap pix(":/img/library.label.png");
     int w = ui->label_img->width();
     int h = ui->label_img->height();
@@ -41,11 +45,14 @@ void LoginWindow::on_pushButton_login_clicked()
     if(!file.exists())
     {
         qCritical() << "File not found";
+        QMessageBox::warning(this, "File Error", "File not found");
+        return;
     }
 
     if(!file.open(QIODevice::ReadOnly))
     {
         qCritical() << file.errorString();
+        return;
     }
 
     QTextStream stream(&file);
@@ -132,4 +139,12 @@ void LoginWindow::on_pushButton_register_clicked()
 //    //_admin_home_screen->show();
 //    //close();
 //}
+
+
+void LoginWindow::on_pushButton_temp_clicked()
+{
+    add_new_member_screen *ptr = new add_new_member_screen;
+    ptr->show();
+    close();
+}
 

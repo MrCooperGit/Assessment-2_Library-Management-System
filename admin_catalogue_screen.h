@@ -15,6 +15,17 @@ public:
     explicit admin_catalogue_screen(QWidget *parent = nullptr);
     ~admin_catalogue_screen();
 
+private slots:
+    void on_pushButton_home_clicked();
+
+    void on_pushButton_modifyMembers_clicked();
+
+    void on_pushButton_addNewBook_clicked();
+
+    void on_pushButton_search_clicked();
+
+    void on_label_username_windowTitleChanged(const QString &title);
+
 private:
     Ui::admin_catalogue_screen *ui;
 };

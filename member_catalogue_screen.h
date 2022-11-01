@@ -15,6 +15,9 @@ public:
     explicit member_catalogue_screen(QWidget *parent = nullptr);
     ~member_catalogue_screen();
 
+private slots:
+    void on_pushButton_home_clicked();
+
 private:
     Ui::member_catalogue_screen *ui;
 };
