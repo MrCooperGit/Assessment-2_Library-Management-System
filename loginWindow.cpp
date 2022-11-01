@@ -38,6 +38,7 @@ void LoginWindow::on_pushButton_login_clicked()
     QString loginPassword = ui->lineEdit_password->text();
 
     QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv");
+
     if(!file.exists())
     {
         qCritical() << "File not found";
@@ -121,16 +122,3 @@ void LoginWindow::on_pushButton_register_clicked()
 
     QMessageBox::information(this, "Details", "Registration successful"); //displays message box showing success
 }
-
-
-
-//void LoginWindow::on_pushButton_login_clicked()
-//{
-//    //Open home screen (member/admin) for testing (member home screen header file is included)
-//    member_home_screen *_member_home_screen = new member_home_screen;
-//    _member_home_screen->show();
-//    close();
-//    //admin_home_screen *_admin_home_screen = new admin_home_screen;
-//    //_admin_home_screen->show();
-//    //close();
-//}

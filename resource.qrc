@@ -9,6 +9,7 @@
         <file>img/menu.label4.png</file>
         <file>csv/users.csv</file>
         <file>csv/items.csv</file>
+        <file>img/addBook.label.png</file>
     </qresource>
     <qresource prefix="/.csv"/>
 </RCC>

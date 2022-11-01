@@ -2,4 +2,10 @@
 test@test.com,Shaun,Cooper,admin,test123
 test1@test.com,Shaun,Cooper,admin,test1123
 test2@test.com,Shaun,Cooper,member,test2123
+<<<<<<< HEAD
 rye@test,rye,george,admin,test
+=======
+shaun@test.com,Shaun,Cooper,admin,shaun123
+>>>>>>> e183a4f4aed59746016d422f7e224441bc5b94ad
+
+admin@test.com,admin,admin,admin,admin
