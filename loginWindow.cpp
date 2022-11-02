@@ -9,6 +9,7 @@
 #include "member_list_screen.h"
 #include "add_new_book_screen.h"
 #include "add_new_member_screen.h"
+#include "admin_book_view_screen.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -128,22 +129,9 @@ void LoginWindow::on_pushButton_register_clicked()
 }
 
 
-
-//void LoginWindow::on_pushButton_login_clicked()
-//{
-//    //Open home screen (member/admin) for testing (member home screen header file is included)
-//    member_home_screen *_member_home_screen = new member_home_screen;
-//    _member_home_screen->show();
-//    close();
-//    //admin_home_screen *_admin_home_screen = new admin_home_screen;
-//    //_admin_home_screen->show();
-//    //close();
-//}
-
-
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_member_screen *ptr = new add_new_member_screen;
+    admin_home_screen *ptr = new admin_home_screen;
     ptr->show();
     close();
 }
