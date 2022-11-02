@@ -4,6 +4,9 @@
 #include "member_list_screen.h"
 #include "add_new_book_screen.h"
 
+#include <QFile>
+#include <QMessageBox>
+
 admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::admin_catalogue_screen)
@@ -21,6 +24,78 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
     int w = ui->label_title->width();
     int h = ui->label_title->height();
     ui->label_title->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
+
+    QFile file("books.csv");
+
+    if(!file.exists())
+    {
+        qCritical() << "File not found";
+        QMessageBox::warning(this, "File Error", "File not found");
+        return;
+    }
+
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qCritical() << file.errorString();
+        return;
+    }
+
+    int defX = 250, defY = 80, defW = 200, defH = 10;
+    int offset_Y = 30;
+
+    while (!file.atEnd()){
+
+        QString line = file.readLine();
+
+        QString title;
+        QString author;
+        QString id;
+
+        QString searchText = ui->lineEdit_search->displayText();
+
+        title.clear();  author.clear();  id.clear();  //Clearing strings from previous line of file
+
+        //Making a string list to seperate each column of the file
+        QStringList fileList;
+        fileList.append(line.split(("")));
+
+
+        title.append(fileList.value(0+1));
+        author.append(fileList.value(0+2));
+        id.append(fileList.value(0));
+
+
+        if (searchText.isEmpty()){
+
+            QLabel *label_title = new QLabel(this);
+            label_title->setText("title");
+            label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+            defX = label_title->x();
+            defY = label_title->y();
+            defW = label_title->width();
+            defH = label_title->height();
+
+            QLabel *label_author = new QLabel(this);
+            label_author->setText("author");
+            label_author->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+            defX = label_author->x();
+            defY = label_author->y();
+            defW = label_author->width();
+            defH = label_author->height();
+
+            QLabel *label_id = new QLabel(this);
+            label_id->setText("id");
+            label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+            defX = label_id->x();
+            defY = label_id->y() + offset_Y;
+            defW = label_id->width();
+            defH = label_id->height();
+        }
+
+    }
 
 }
 
