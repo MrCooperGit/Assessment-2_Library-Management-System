@@ -41,7 +41,8 @@ void LoginWindow::on_pushButton_login_clicked()
     QString loginEmail = ui->lineEdit_username->text();
     QString loginPassword = ui->lineEdit_password->text();
 
-    QFile file("C:/Users/Shaun Cooper/Documents/Qt Projects/Assessment-2_Library-Management-System/users.csv");
+    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv");
+
     if(!file.exists())
     {
         qCritical() << "File not found";
@@ -95,6 +96,8 @@ void LoginWindow::on_pushButton_login_clicked()
 
 void LoginWindow::on_pushButton_register_clicked()
 {
+
+
     QString email = ui->lineEdit_email->text(); //String variables which store the text in the lineEdit boxes
     QString firstName = ui->lineEdit_firstName->text();
     QString lastName = ui->lineEdit_lastName->text();
@@ -108,7 +111,7 @@ void LoginWindow::on_pushButton_register_clicked()
     }
 
 
-    QFile file("C:/Users/Shaun Cooper/Documents/Qt Projects/Assessment-2_Library-Management-System/users.csv"); //create variable for the file
+    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv"); //create variable for the file
     //also note that you cannot open .qrc files in write modes. Read-only.
     if(!file.open(QIODevice::Append)) //open file in append which adds new data to end
     {
@@ -128,22 +131,9 @@ void LoginWindow::on_pushButton_register_clicked()
 }
 
 
-
-//void LoginWindow::on_pushButton_login_clicked()
-//{
-//    //Open home screen (member/admin) for testing (member home screen header file is included)
-//    member_home_screen *_member_home_screen = new member_home_screen;
-//    _member_home_screen->show();
-//    close();
-//    //admin_home_screen *_admin_home_screen = new admin_home_screen;
-//    //_admin_home_screen->show();
-//    //close();
-//}
-
-
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_member_screen *ptr = new add_new_member_screen;
+    add_new_book_screen *ptr = new add_new_book_screen;
     ptr->show();
     close();
 }

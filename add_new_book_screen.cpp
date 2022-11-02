@@ -3,6 +3,11 @@
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
 
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
+#include <QLabel>
+
 add_new_book_screen::add_new_book_screen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::add_new_book_screen)
@@ -42,5 +47,39 @@ void add_new_book_screen::on_pushButton_modifyCatalogue_clicked()
     admin_catalogue_screen *ptr = new class admin_catalogue_screen;
     ptr->show();
     close();
+}
+
+
+
+//When user submits book details
+void add_new_book_screen::on_pushButton_clicked()
+{
+    QString bookTitle = ui->lineEdit_title->displayText();
+    QString author = ui->lineEdit_author->displayText();
+    QString serialNumber = ui->lineEdit_id->displayText();
+
+    QFile file ("books.csv");
+
+    if(!file.exists())  //If file does not exist give error
+    {
+        qCritical() << "File not found";
+        QMessageBox::warning(this, "File Error", "File not found");
+        return;
+    }
+
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Append))   //If file is not opened give error
+    {
+        qCritical() << file.errorString();
+        return;
+    }
+
+    QTextStream stream(&file);
+
+    //Input string variables into the file
+    stream << serialNumber << "," << bookTitle << "," << author << "\n";
+
+    file.close();
+
+    ui->label_confirmSubmit->setText("Submitted");
 }
 

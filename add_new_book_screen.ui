@@ -195,7 +195,7 @@ border-radius: 4px;</string>
      <number>10</number>
     </property>
     <item>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEdit_title">
       <property name="font">
        <font>
         <family>Italic Outline Art</family>
@@ -211,7 +211,7 @@ border-radius: 4px;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_author">
       <property name="font">
        <font>
         <family>Italic Outline Art</family>
@@ -227,7 +227,7 @@ border-radius: 4px;</string>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="lineEdit_id">
       <property name="font">
        <font>
         <family>Italic Outline Art</family>
@@ -243,6 +243,19 @@ border-radius: 4px;</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_confirmSubmit">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>420</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources/>

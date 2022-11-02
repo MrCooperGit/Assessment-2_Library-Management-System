@@ -20,6 +20,8 @@ private slots:
 
     void on_pushButton_modifyCatalogue_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::add_new_book_screen *ui;
 };
