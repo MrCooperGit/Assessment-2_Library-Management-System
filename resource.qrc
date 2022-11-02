@@ -7,9 +7,19 @@
         <file>img/homescreen-label.PNG</file>
         <file>img/menu.label3.png</file>
         <file>img/menu.label4.png</file>
-        <file>csv/users.csv</file>
-        <file>csv/items.csv</file>
         <file>img/addBook.label.png</file>
+        <file>img/addMember.label.png</file>
+        <file>img/editBook.label.png</file>
+        <file>img/editMember.label.png</file>
+        <file>img/yourItems.label.png</file>
+        <file>img/FofRing.book.jpg</file>
+        <file>img/Hobbit.book.jpg</file>
+        <file>img/itFeltLikeAKiss.book.jpg</file>
+        <file>img/LYONS.book.jpg</file>
+        <file>img/Mockingbird.book.jpg</file>
+        <file>img/starsight.book.jpg</file>
+        <file>img/wandOfAvalon.book.jpg</file>
+        <file>img/zeroHour.book.jpg</file>
     </qresource>
     <qresource prefix="/.csv"/>
 </RCC>
