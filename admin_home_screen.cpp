@@ -16,6 +16,12 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
     this->setStyleSheet("background-color: white;");
     this->setWindowTitle("Admin Home");
 
+//    QPixmap *image = new QPixmap(":/img/menu.label1.png");
+//    QIcon icon(*image);
+//    QSize iconSize(image->width(), image->height());
+    ui->pushButton->setIcon(QIcon(":/img/menu.label1.png"));
+    ui->pushButton->setIconSize(QSize(180,140));
+
     //Setting logo images
     QPixmap pix(":/img/library.label.png");
     int w = ui->label_title->width();
@@ -27,17 +33,18 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
     int h2 = ui->label_heading->height();
     ui->label_heading->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
 
-    QPixmap pix3(":/img/menu.label1.png");
-    ui->label->setPixmap(pix3.scaled(150,140, Qt::IgnoreAspectRatio));
+    //Setting button icons
+    ui->pushButton->setIcon(QIcon(":/img/menu.label1.png"));
+    ui->pushButton->setIconSize(QSize(190,130));
 
-    QPixmap pix4(":/img/menu.label2.png");
-    ui->label_2->setPixmap(pix4.scaled(150,140, Qt::IgnoreAspectRatio));
+    ui->pushButton_2->setIcon(QIcon(":/img/menu.label2.png"));
+    ui->pushButton_2->setIconSize(QSize(190,130));
 
-    QPixmap pix5(":/img/menu.label3.png");
-    ui->label_3->setPixmap(pix5.scaled(150,140, Qt::IgnoreAspectRatio));
+    ui->pushButton_3->setIcon(QIcon(":/img/menu.label3.png"));
+    ui->pushButton_3->setIconSize(QSize(190,130));
 
-    QPixmap pix6(":/img/menu.label4.png");
-    ui->label_4->setPixmap(pix6.scaled(150,140, Qt::IgnoreAspectRatio));
+    ui->pushButton_4->setIcon(QIcon(":/img/menu.label4.png"));
+    ui->pushButton_4->setIconSize(QSize(190,130));
 }
 
 admin_home_screen::~admin_home_screen()
@@ -56,17 +63,9 @@ void admin_home_screen::on_pushButton_addNewBook_clicked()
 }
 
 
-void admin_home_screen::on_pushButton_addNewBookImg_clicked()
+void admin_home_screen::on_pushButton_clicked()
 {
     add_new_book_screen *ptr = new class add_new_book_screen;
-    ptr->show();
-    close();
-}
-
-
-void admin_home_screen::on_pushButton_modifCatalogueImg_clicked()
-{
-    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
     ptr->show();
     close();
 }
@@ -80,7 +79,15 @@ void admin_home_screen::on_pushButton_modifyCatalogue_clicked()
 }
 
 
-void admin_home_screen::on_pushButton_addNewMemberImg_clicked()
+void admin_home_screen::on_pushButton_2_clicked()
+{
+    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
+    ptr->show();
+    close();
+}
+
+
+void admin_home_screen::on_pushButton_3_clicked()
 {
     add_new_member_screen *ptr = new class add_new_member_screen;
     ptr->show();
@@ -96,7 +103,7 @@ void admin_home_screen::on_pushButton_addNewMember_clicked()
 }
 
 
-void admin_home_screen::on_pushButton_modifyMemberImg_clicked()
+void admin_home_screen::on_pushButton_4_clicked()
 {
     member_list_screen *ptr = new class member_list_screen;
     ptr->show();

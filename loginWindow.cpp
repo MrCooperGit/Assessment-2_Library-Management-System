@@ -10,12 +10,15 @@
 #include "add_new_book_screen.h"
 #include "add_new_member_screen.h"
 #include "admin_book_view_screen.h"
+#include "your_items_screen.h"
 
 #include <QFile>
 #include <QTextStream>
 #include <QStringList>
 #include <QMessageBox>
 #include <QPixmap>
+#include <QDateTime>
+#include <QDebug>
 
 
 LoginWindow::LoginWindow(QWidget *parent)
@@ -24,10 +27,19 @@ LoginWindow::LoginWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //Basic window style
+    this->setStyleSheet("background-color: white;");
+    this->setWindowTitle("Login");
+
     QPixmap pix(":/img/library.label.png");
     int w = ui->label_img->width();
     int h = ui->label_img->height();
     ui->label_img->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+
+    //construct timer to read date when screen opens
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
+    timer->start(1000); //time in ms
 
 }
 
@@ -36,6 +48,11 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+void LoginWindow::currentDate(){
+    QDate date = QDate::currentDate();
+    QString strDate = date.toString("dd/MM/yyyy");
+    ui->label_date->setText(strDate);
+}
 
 void LoginWindow::on_pushButton_login_clicked()
 {
@@ -134,7 +151,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    admin_home_screen *ptr = new admin_home_screen;
+    add_new_book_screen *ptr = new add_new_book_screen;
     ptr->show();
     close();
 }

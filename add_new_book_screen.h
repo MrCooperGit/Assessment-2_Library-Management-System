@@ -15,6 +15,9 @@ public:
     explicit add_new_book_screen(QWidget *parent = nullptr);
     ~add_new_book_screen();
 
+public slots:
+    void currentDate();
+
 private slots:
     void on_pushButton_home_clicked();
 
@@ -24,6 +27,9 @@ private slots:
 
 private:
     Ui::add_new_book_screen *ui;
+
+    QTimer *timer; //object to start timer to find date with currentDate()
+
 };
 
 #endif // ADD_NEW_BOOK_SCREEN_H

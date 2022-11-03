@@ -19,19 +19,19 @@ public:
 
 private slots:
 
-    void on_pushButton_addNewBookImg_clicked();
+    void on_pushButton_clicked();
 
     void on_pushButton_addNewBook_clicked();
 
-    void on_pushButton_modifCatalogueImg_clicked();
+    void on_pushButton_2_clicked();
 
     void on_pushButton_modifyCatalogue_clicked();
 
-    void on_pushButton_addNewMemberImg_clicked();
+    void on_pushButton_3_clicked();
 
     void on_pushButton_addNewMember_clicked();
 
-    void on_pushButton_modifyMemberImg_clicked();
+    void on_pushButton_4_clicked();
 
     void on_pushButton_modifyMember_clicked();
 

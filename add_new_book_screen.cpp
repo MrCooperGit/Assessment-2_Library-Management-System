@@ -1,4 +1,5 @@
 #include "add_new_book_screen.h"
+#include "qtimer.h"
 #include "ui_add_new_book_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
@@ -7,6 +8,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QLabel>
+#include <QDate>
 
 add_new_book_screen::add_new_book_screen(QWidget *parent) :
     QWidget(parent),
@@ -27,11 +29,22 @@ add_new_book_screen::add_new_book_screen(QWidget *parent) :
     int w2 = ui->label_heading->width();
     int h2 = ui->label_heading->height();
     ui->label_heading->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
+
+    //construct timer to read date when screen opens
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
+    timer->start(1000); //time in ms
 }
 
 add_new_book_screen::~add_new_book_screen()
 {
     delete ui;
+}
+
+void add_new_book_screen::currentDate(){
+    QDate date = QDate::currentDate();
+    QString strDate = date.toString("dd/MM/yyyy");
+    ui->label_date->setText(strDate);
 }
 
 void add_new_book_screen::on_pushButton_home_clicked()

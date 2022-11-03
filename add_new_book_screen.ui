@@ -99,10 +99,10 @@ color: #3366CC;
   <widget class="QLabel" name="label_title">
    <property name="geometry">
     <rect>
-     <x>710</x>
-     <y>510</y>
-     <width>81</width>
-     <height>81</height>
+     <x>740</x>
+     <y>540</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -255,6 +255,25 @@ border-radius: 4px;</string>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_date">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>575</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
  </widget>

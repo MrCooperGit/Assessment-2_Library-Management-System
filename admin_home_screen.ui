@@ -16,10 +16,10 @@
   <widget class="QLabel" name="label_title">
    <property name="geometry">
     <rect>
-     <x>705</x>
-     <y>510</y>
-     <width>81</width>
-     <height>81</height>
+     <x>740</x>
+     <y>540</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -73,9 +73,9 @@ background-color: rgb(255, 255, 255);
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>230</y>
-     <width>801</width>
-     <height>181</height>
+     <y>251</y>
+     <width>808</width>
+     <height>182</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -94,9 +94,18 @@ background-color: rgb(255, 255, 255);
        <number>8</number>
       </property>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>130</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -122,7 +131,8 @@ background-color: rgb(255, 255, 255);
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(45, 217, 255);</string>
+         <string notr="true">background-color: rgb(45, 217, 255);
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Add New Book</string>
@@ -137,9 +147,18 @@ background-color: rgb(255, 255, 255);
        <number>8</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>130</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -165,7 +184,8 @@ background-color: rgb(255, 255, 255);
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(83, 251, 109);</string>
+         <string notr="true">background-color: rgb(83, 251, 109);
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Modify Catalogue</string>
@@ -180,15 +200,18 @@ background-color: rgb(255, 255, 255);
        <number>8</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QPushButton" name="pushButton_3">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>150</width>
           <height>130</height>
          </size>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -214,7 +237,8 @@ background-color: rgb(255, 255, 255);
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(254, 187, 108);</string>
+         <string notr="true">background-color: rgb(254, 187, 108);
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Add New Member</string>
@@ -229,9 +253,18 @@ background-color: rgb(255, 255, 255);
        <number>8</number>
       </property>
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>130</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+         <string notr="true"/>
         </property>
         <property name="text">
          <string/>
@@ -257,7 +290,8 @@ background-color: rgb(255, 255, 255);
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(225, 86, 86);</string>
+         <string notr="true">background-color: rgb(225, 86, 86);
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Modify Member</string>
@@ -267,6 +301,25 @@ background-color: rgb(255, 255, 255);
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_date">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>575</y>
+     <width>111</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>
