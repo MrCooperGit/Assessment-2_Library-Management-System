@@ -1,6 +1,6 @@
 #include "loginWindow.h"
 #include "./ui_loginWindow.h"
-//#include "file_functions.h"
+#include "classes.h"
 #include "admin_home_screen.h"
 #include "member_home_screen.h"
 #include "admin_home_screen.h"
@@ -11,6 +11,7 @@
 #include "add_new_member_screen.h"
 #include "admin_book_view_screen.h"
 #include "your_items_screen.h"
+#include "member_book_order_screen.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -19,6 +20,7 @@
 #include <QPixmap>
 #include <QDateTime>
 #include <QDebug>
+#include <QDir>
 
 
 LoginWindow::LoginWindow(QWidget *parent)
@@ -48,6 +50,7 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+//Function to display the current date
 void LoginWindow::currentDate(){
     QDate date = QDate::currentDate();
     QString strDate = date.toString("dd/MM/yyyy");
@@ -59,7 +62,10 @@ void LoginWindow::on_pushButton_login_clicked()
     QString loginEmail = ui->lineEdit_username->text();
     QString loginPassword = ui->lineEdit_password->text();
 
-    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv");
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("users.csv")); //file is now specific to the user's directory
 
     if(!file.exists())
     {
@@ -74,7 +80,7 @@ void LoginWindow::on_pushButton_login_clicked()
         return;
     }
 
-    QTextStream stream(&file);
+    //QTextStream stream(&file);
     QString email, password;
     while (!file.atEnd()){
         QString line = file.readLine(); //place line into string to edit line with append
@@ -120,6 +126,7 @@ void LoginWindow::on_pushButton_register_clicked()
     QString firstName = ui->lineEdit_firstName->text();
     QString lastName = ui->lineEdit_lastName->text();
     QString password = ui->lineEdit_password2->text();
+    //int userId = User::getUserId();
     QString userType; //Below radio buttons will determine the string for this variable
     if(ui->radioButton_admin->isChecked()){
         userType.replace(0,99,"admin");
@@ -128,15 +135,29 @@ void LoginWindow::on_pushButton_register_clicked()
         userType.replace(0,99,"member");
     }
 
+    //First find the current directory
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("users.csv")); //file is now specific to the user's directory
 
-    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv"); //create variable for the file
-    //also note that you cannot open .qrc files in write modes. Read-only.
+    if(!file.exists())  //If file does not exist, will create file in current directory
+    {
+        if (!file.open(QIODevice::ReadWrite))
+        {
+        qWarning("Cannot create the file");
+        return;
+        }
+        file.close();
+    }
+
     if(!file.open(QIODevice::Append)) //open file in append which adds new data to end
     {
         qCritical() << file.errorString(); //displays error if file not opened
+        return;
     }
     QTextStream stream(&file); //declare variable to store the stream from file
-    stream << "\n" << email << "," << firstName << "," << lastName << "," << userType << "," << password;
+    stream << "\n" << email << "," << User::getUserId() << "," << firstName << "," << lastName << "," << userType << "," << password;
     //stream pastes the variables into the .csv file with /n for new line and ',' for next cell
     file.close();
 

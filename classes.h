@@ -2,33 +2,53 @@
 #define CLASSES_H
 
 #include <QString>
+#include <QObject>
+
 
 class User {
-    int ID;
     QString firstName, lastName;
-    QString username;
     QString password;
+
+
+public:
+    static int iD;
+    User(QString fN, QString lN, QString p);
+    static int getUserId();
 };
 
 
 class Member : public User {
     QString emailAddress;
+
+public:
+    Member();
 };
 
 
 class Admin : public User {
+    QString username;
 
+public:
+    Admin();
 };
 
 
 class Item {
-    int ID;
+
+public:
+    static int iD;
+
+    Item();
 };
 
 
 class Book : public Item {
     QString title;
     QString author;
+
+public:
+    Book();
+    static int getItemId();
 };
 
 #endif // CLASSES_H

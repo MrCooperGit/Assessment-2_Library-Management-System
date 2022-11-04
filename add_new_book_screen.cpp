@@ -9,6 +9,7 @@
 #include <QTextStream>
 #include <QLabel>
 #include <QDate>
+#include <QDir>
 
 add_new_book_screen::add_new_book_screen(QWidget *parent) :
     QWidget(parent),
@@ -63,7 +64,6 @@ void add_new_book_screen::on_pushButton_modifyCatalogue_clicked()
 }
 
 
-
 //When user submits book details
 void add_new_book_screen::on_pushButton_clicked()
 {
@@ -71,13 +71,16 @@ void add_new_book_screen::on_pushButton_clicked()
     QString author = ui->lineEdit_author->displayText();
     QString serialNumber = ui->lineEdit_id->displayText();
 
-    QFile file ("books.csv");
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("books.csv")); //file is now specific to the user's directory
 
-    if(!file.exists())  //If file does not exist give error
+    if(!file.exists())  //If file does not exist, will create file in current directory
     {
-        qCritical() << "File not found";
-        QMessageBox::warning(this, "File Error", "File not found");
-        return;
+        if (!file.open(QIODevice::ReadWrite))
+            qWarning("Cannot create the file");
+        file.close();
     }
 
     if(!file.open(QIODevice::WriteOnly | QIODevice::Append))   //If file is not opened give error
