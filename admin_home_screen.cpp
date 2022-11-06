@@ -1,10 +1,13 @@
 #include "admin_home_screen.h"
 #include "ui_admin_home_screen.h"
-#include <QPixmap>
 #include "add_new_book_screen.h"
 #include "admin_catalogue_screen.h"
 #include "add_new_member_screen.h"
 #include "member_list_screen.h"
+#include "classes.h"
+
+#include <QPixmap>
+
 
 admin_home_screen::admin_home_screen(QWidget *parent) :
     QWidget(parent),
@@ -45,6 +48,8 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
 
     ui->pushButton_4->setIcon(QIcon(":/img/menu.label4.png"));
     ui->pushButton_4->setIconSize(QSize(190,130));
+
+    ui->label_username->setText(User::userName());
 }
 
 admin_home_screen::~admin_home_screen()

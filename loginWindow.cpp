@@ -81,21 +81,37 @@ void LoginWindow::on_pushButton_login_clicked()
     }
 
     //QTextStream stream(&file);
-    QString email, password;
+    QString email, password, firstName, lastName;
     while (!file.atEnd()){
-        QString line = file.readLine(); //place line into string to edit line with append
+        QString line = file.readLine(); //place line into string
+
+        //empty the variables before each loop
         email.clear();
         password.clear();
-        email.append(line.split(',').first()); //separates line into array of strings using ','. Chooses the first string as variable
-        password.append(line.split(',').last());
-        qInfo() << email << password ;
-        if (password.contains('\n')) password.chop(1);   //removes '\n' from password
-        qInfo() << loginEmail << email << loginPassword << password; //just to check if email and password are selected properly
+        firstName.clear();
+        lastName.clear();
+
+
+        QStringList list = line.split(","); //split string into string array using "," as break
+        //assign variables by index of the string array
+        email = list[0];
+        password = list[5];
+        firstName.replace(0,12, list[2]);
+        lastName.replace(0,12, list[3]);
+
+        if (password.contains("\r\n")) password.chop(2);   //removes '\r\n' from password
+
+        //using integers to validate login details
+        //the compare() function returns 0 if strings are the same
         int validateEmail, validatePass;
         validateEmail = loginEmail.compare(email);
         validatePass = loginPassword.compare(password);
-        qInfo() << validateEmail << validatePass;
+
         if(validateEmail==0 && validatePass==0){
+
+            //store first and last name in object of User class for use in other screens
+            User::setName(firstName, lastName);
+            qInfo() << User::userName();
             file.close();
             if(line.contains("admin")){
                 admin_home_screen *admin_home_screen = new class admin_home_screen;
@@ -126,7 +142,6 @@ void LoginWindow::on_pushButton_register_clicked()
     QString firstName = ui->lineEdit_firstName->text();
     QString lastName = ui->lineEdit_lastName->text();
     QString password = ui->lineEdit_password2->text();
-    //int userId = User::getUserId();
     QString userType; //Below radio buttons will determine the string for this variable
     if(ui->radioButton_admin->isChecked()){
         userType.replace(0,99,"admin");
@@ -172,7 +187,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_book_screen *ptr = new add_new_book_screen;
+    add_new_book_screen *ptr = new class add_new_book_screen;
     ptr->show();
     close();
 }

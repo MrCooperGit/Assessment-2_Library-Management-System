@@ -2,6 +2,7 @@
 #include "ui_admin_book_view_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
+#include "classes.h"
 
 admin_book_view_screen::admin_book_view_screen(QWidget *parent) :
     QWidget(parent),
@@ -23,6 +24,8 @@ admin_book_view_screen::admin_book_view_screen(QWidget *parent) :
     int h2 = ui->label_bookImg->height();
     ui->label_bookImg->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
 
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 admin_book_view_screen::~admin_book_view_screen()

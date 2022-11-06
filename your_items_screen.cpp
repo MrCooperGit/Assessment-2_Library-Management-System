@@ -4,6 +4,7 @@
 #include "member_home_screen.h"
 #include "loginWindow.h"
 #include "QDate"
+#include "classes.h"
 
 your_items_screen::your_items_screen(QWidget *parent) :
     QWidget(parent),
@@ -30,6 +31,8 @@ your_items_screen::your_items_screen(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
     timer->start(1000); //time in ms
 
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 your_items_screen::~your_items_screen()

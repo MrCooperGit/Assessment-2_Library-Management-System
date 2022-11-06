@@ -6,14 +6,6 @@
 #include <QTextStream>
 
 
-User::User(QString fN, QString lN, QString p)
-{
-    firstName = fN;
-    lastName = lN;
-    password = p;
-
-    iD++;
-}
 
 //Counts the number of lines in file and returns it as static int for userId
 int User::getUserId(){
@@ -35,3 +27,11 @@ int User::getUserId(){
     return iD + 43682;
 }
 
+QString User::userName(){
+    return User::firstName + " " + User::lastName;
+}
+
+void User::setName(QString fName, QString lName){
+    User::firstName = fName;
+    User::lastName = lName;
+}

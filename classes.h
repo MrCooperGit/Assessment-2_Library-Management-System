@@ -6,14 +6,15 @@
 
 
 class User {
-    QString firstName, lastName;
     QString password;
 
-
 public:
+    static QString firstName, lastName;
     static int iD;
-    User(QString fN, QString lN, QString p);
+
     static int getUserId();
+    static QString userName();
+    static void setName(QString fName, QString lastName);
 };
 
 

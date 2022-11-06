@@ -3,6 +3,7 @@
 #include "ui_add_new_book_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
+#include "classes.h"
 
 #include <QFile>
 #include <QMessageBox>
@@ -35,6 +36,9 @@ add_new_book_screen::add_new_book_screen(QWidget *parent) :
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
     timer->start(1000); //time in ms
+
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 add_new_book_screen::~add_new_book_screen()

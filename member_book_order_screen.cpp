@@ -2,6 +2,7 @@
 #include "ui_member_book_order_screen.h"
 #include "member_home_screen.h"
 #include "member_catalogue_screen.h"
+#include "classes.h"
 
 member_book_order_screen::member_book_order_screen(QWidget *parent) :
     QWidget(parent),
@@ -18,6 +19,8 @@ member_book_order_screen::member_book_order_screen(QWidget *parent) :
     int h = ui->label_title->height();
     ui->label_title->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
 
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 member_book_order_screen::~member_book_order_screen()

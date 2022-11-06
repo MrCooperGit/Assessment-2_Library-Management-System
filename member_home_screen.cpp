@@ -3,6 +3,7 @@
 #include <QPixmap>
 #include "member_catalogue_screen.h"
 #include "your_items_screen.h"
+#include "classes.h"
 
 member_home_screen::member_home_screen(QWidget *parent) :
     QWidget(parent),
@@ -30,6 +31,9 @@ member_home_screen::member_home_screen(QWidget *parent) :
     int w = ui->label_img_2->width();
     int h = ui->label_img_2->height();
     ui->label_img_2->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
+
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 member_home_screen::~member_home_screen()
