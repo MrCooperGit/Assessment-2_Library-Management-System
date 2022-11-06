@@ -20,6 +20,7 @@
         <file>img/starsight.book.jpg</file>
         <file>img/wandOfAvalon.book.jpg</file>
         <file>img/zeroHour.book.jpg</file>
+        <file>img/noImage.png</file>
     </qresource>
     <qresource prefix="/.csv"/>
 </RCC>

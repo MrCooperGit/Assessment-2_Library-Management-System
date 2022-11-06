@@ -155,7 +155,7 @@ color: #3366CC;
      <x>140</x>
      <y>40</y>
      <width>524</width>
-     <height>44</height>
+     <height>72</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -183,6 +183,9 @@ border: 1px solid #000000;
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_search">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="minimumSize">
        <size>
         <width>100</width>
