@@ -55,7 +55,8 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
     }
 
     int defX = 250, defY = 80, defW = 200, defH = 15;
-    int offset_Y = 30, offset_X = -80;
+    int btnW = 50;
+    int offset_Y = 30, img_offset_X = -80, btn_offset_X = 250;
 
     int img_W = 50, img_H = 80;
 
@@ -94,14 +95,14 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                 if (title.contains("The Hobbit")){
 
                     QLabel *label_title_img = new QLabel(this);
-                    label_title_img->setGeometry((defX + offset_X), (defY + offset_Y), img_W, img_H);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/Hobbit.book.jpg");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
                 } else if (title.contains("To Kill A Mockingbird")){
 
                     QLabel *label_title_img = new QLabel(this);
-                    label_title_img->setGeometry((defX + offset_X), (defY + offset_Y), img_W, img_H);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/Mockingbird.book.jpg");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
                 }
@@ -109,10 +110,16 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
                     //Default image that shows if one isn't set
                     QLabel *label_title_img = new QLabel(this);
-                    label_title_img->setGeometry((defX + offset_X), (defY + offset_Y), img_W, img_H);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/noImage.png");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
                 }
+
+
+                //Creating Button for book
+                QPushButton *edit_btn = new QPushButton(this);
+                edit_btn->setText("Edit");
+                edit_btn->setGeometry((defX + btn_offset_X), (defY + offset_Y), btnW, defH);
 
 
                 //Creating labels for the title, author, id
@@ -197,14 +204,14 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                 if (title.contains("The Hobbit")){
 
                     QLabel *label_title_img = new QLabel(this);
-                    label_title_img->setGeometry((defX + offset_X), (defY + offset_Y), img_W, img_H);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/Hobbit.book.jpg");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
                 } else if (title.contains("To Kill A Mockingbird")){
 
                     QLabel *label_title_img = new QLabel(this);
-                    label_title_img->setGeometry((defX + offset_X), (defY + offset_Y), img_W, img_H);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/Mockingbird.book.jpg");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
                 }
@@ -212,7 +219,7 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
                     //Default image that shows if one isn't set
                     QLabel *label_title_img = new QLabel(this);
-                    label_title_img->setGeometry((defX + offset_X), (defY + offset_Y), img_W, img_H);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/noImage.png");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
                 }
