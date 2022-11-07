@@ -2,6 +2,7 @@
 #define LOGINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class LoginWindow; }
@@ -15,6 +16,9 @@ public:
     LoginWindow(QWidget *parent = nullptr);
     ~LoginWindow();
 
+public slots:
+    void currentDate();
+
 private slots:
     void on_pushButton_register_clicked();
 
@@ -25,5 +29,6 @@ private slots:
 private:
     Ui::LoginWindow *ui;
 
+    QTimer *timer; //object to start timer to find date with currentDate()
 };
 #endif // LOGINWINDOW_H

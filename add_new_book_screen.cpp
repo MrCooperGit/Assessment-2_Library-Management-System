@@ -1,12 +1,16 @@
 #include "add_new_book_screen.h"
+#include "qtimer.h"
 #include "ui_add_new_book_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
+#include "classes.h"
 
 #include <QFile>
 #include <QMessageBox>
 #include <QTextStream>
 #include <QLabel>
+#include <QDate>
+#include <QDir>
 
 add_new_book_screen::add_new_book_screen(QWidget *parent) :
     QWidget(parent),
@@ -27,11 +31,25 @@ add_new_book_screen::add_new_book_screen(QWidget *parent) :
     int w2 = ui->label_heading->width();
     int h2 = ui->label_heading->height();
     ui->label_heading->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
+
+    //construct timer to read date when screen opens
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
+    timer->start(1000); //time in ms
+
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 add_new_book_screen::~add_new_book_screen()
 {
     delete ui;
+}
+
+void add_new_book_screen::currentDate(){
+    QDate date = QDate::currentDate();
+    QString strDate = date.toString("dd/MM/yyyy");
+    ui->label_date->setText(strDate);
 }
 
 void add_new_book_screen::on_pushButton_home_clicked()
@@ -50,7 +68,6 @@ void add_new_book_screen::on_pushButton_modifyCatalogue_clicked()
 }
 
 
-
 //When user submits book details
 void add_new_book_screen::on_pushButton_clicked()
 {
@@ -58,13 +75,16 @@ void add_new_book_screen::on_pushButton_clicked()
     QString author = ui->lineEdit_author->displayText();
     QString serialNumber = ui->lineEdit_id->displayText();
 
-    QFile file ("books.csv");
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("books.csv")); //file is now specific to the user's directory
 
-    if(!file.exists())  //If file does not exist give error
+    if(!file.exists())  //If file does not exist, will create file in current directory
     {
-        qCritical() << "File not found";
-        QMessageBox::warning(this, "File Error", "File not found");
-        return;
+        if (!file.open(QIODevice::ReadWrite))
+            qWarning("Cannot create the file");
+        file.close();
     }
 
     if(!file.open(QIODevice::WriteOnly | QIODevice::Append))   //If file is not opened give error

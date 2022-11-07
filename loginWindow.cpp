@@ -1,6 +1,6 @@
 #include "loginWindow.h"
 #include "./ui_loginWindow.h"
-//#include "file_functions.h"
+#include "classes.h"
 #include "admin_home_screen.h"
 #include "member_home_screen.h"
 #include "admin_home_screen.h"
@@ -9,12 +9,18 @@
 #include "member_list_screen.h"
 #include "add_new_book_screen.h"
 #include "add_new_member_screen.h"
+#include "admin_book_view_screen.h"
+#include "your_items_screen.h"
+#include "member_book_order_screen.h"
 
 #include <QFile>
 #include <QTextStream>
 #include <QStringList>
 #include <QMessageBox>
 #include <QPixmap>
+#include <QDateTime>
+#include <QDebug>
+#include <QDir>
 
 
 LoginWindow::LoginWindow(QWidget *parent)
@@ -23,10 +29,19 @@ LoginWindow::LoginWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //Basic window style
+    this->setStyleSheet("background-color: white;");
+    this->setWindowTitle("Login");
+
     QPixmap pix(":/img/library.label.png");
     int w = ui->label_img->width();
     int h = ui->label_img->height();
     ui->label_img->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
+
+    //construct timer to read date when screen opens
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
+    timer->start(1000); //time in ms
 
 }
 
@@ -35,13 +50,22 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
+//Function to display the current date
+void LoginWindow::currentDate(){
+    QDate date = QDate::currentDate();
+    QString strDate = date.toString("dd/MM/yyyy");
+    ui->label_date->setText(strDate);
+}
 
 void LoginWindow::on_pushButton_login_clicked()
 {
     QString loginEmail = ui->lineEdit_username->text();
     QString loginPassword = ui->lineEdit_password->text();
 
-    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv");
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("users.csv")); //file is now specific to the user's directory
 
     if(!file.exists())
     {
@@ -56,22 +80,38 @@ void LoginWindow::on_pushButton_login_clicked()
         return;
     }
 
-    QTextStream stream(&file);
-    QString email, password;
+    //QTextStream stream(&file);
+    QString email, password, firstName, lastName;
     while (!file.atEnd()){
-        QString line = file.readLine(); //place line into string to edit line with append
+        QString line = file.readLine(); //place line into string
+
+        //empty the variables before each loop
         email.clear();
         password.clear();
-        email.append(line.split(',').first()); //separates line into array of strings using ','. Chooses the first string as variable
-        password.append(line.split(',').last());
-        qInfo() << email << password ;
-        if (password.contains('\n')) password.chop(1);   //removes '\n' from password
-        qInfo() << loginEmail << email << loginPassword << password; //just to check if email and password are selected properly
+        firstName.clear();
+        lastName.clear();
+
+
+        QStringList list = line.split(","); //split string into string array using "," as break
+        //assign variables by index of the string array
+        email = list[0];
+        password = list[5];
+        firstName.replace(0,12, list[2]);
+        lastName.replace(0,12, list[3]);
+
+        if (password.contains("\r\n")) password.chop(2);   //removes '\r\n' from password
+
+        //using integers to validate login details
+        //the compare() function returns 0 if strings are the same
         int validateEmail, validatePass;
         validateEmail = loginEmail.compare(email);
         validatePass = loginPassword.compare(password);
-        qInfo() << validateEmail << validatePass;
+
         if(validateEmail==0 && validatePass==0){
+
+            //store first and last name in object of User class for use in other screens
+            User::setName(firstName, lastName);
+            qInfo() << User::userName();
             file.close();
             if(line.contains("admin")){
                 admin_home_screen *admin_home_screen = new class admin_home_screen;
@@ -110,15 +150,29 @@ void LoginWindow::on_pushButton_register_clicked()
         userType.replace(0,99,"member");
     }
 
+    //First find the current directory
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("users.csv")); //file is now specific to the user's directory
 
-    QFile file("D:/Yoobee/Integrated Studio 2/Assessment 2/repo/users.csv"); //create variable for the file
-    //also note that you cannot open .qrc files in write modes. Read-only.
+    if(!file.exists())  //If file does not exist, will create file in current directory
+    {
+        if (!file.open(QIODevice::ReadWrite))
+        {
+        qWarning("Cannot create the file");
+        return;
+        }
+        file.close();
+    }
+
     if(!file.open(QIODevice::Append)) //open file in append which adds new data to end
     {
         qCritical() << file.errorString(); //displays error if file not opened
+        return;
     }
     QTextStream stream(&file); //declare variable to store the stream from file
-    stream << "\n" << email << "," << firstName << "," << lastName << "," << userType << "," << password;
+    stream << "\n" << email << "," << User::getUserId() << "," << firstName << "," << lastName << "," << userType << "," << password;
     //stream pastes the variables into the .csv file with /n for new line and ',' for next cell
     file.close();
 
@@ -133,7 +187,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_book_screen *ptr = new add_new_book_screen;
+    add_new_book_screen *ptr = new class add_new_book_screen;
     ptr->show();
     close();
 }

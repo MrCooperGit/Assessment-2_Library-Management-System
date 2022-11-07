@@ -3,6 +3,8 @@
 #include "admin_home_screen.h"
 #include "member_list_screen.h"
 #include "add_new_book_screen.h"
+#include "classes.h"
+
 
 #include <QFile>
 #include <QMessageBox>
@@ -33,6 +35,9 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
     int w = ui->label_title->width();
     int h = ui->label_title->height();
     ui->label_title->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
+
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 
     QFile file("books.csv");
 

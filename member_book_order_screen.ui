@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>member_book_order_screen</class>
+ <widget class="QWidget" name="member_book_order_screen">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,6 +13,58 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QPushButton" name="pushButton_home">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Italic Outline Art</family>
+     <pointsize>12</pointsize>
+     <bold>false</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: 0;
+border-radius: 15px;
+border-color: 0;
+color: #3366CC;
+</string>
+   </property>
+   <property name="text">
+    <string>Home</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_username">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>10</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">text-align: right;
+background-color: rgb(255, 255, 255);
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <widget class="QPushButton" name="pushButton_catalogue">
    <property name="geometry">
     <rect>
@@ -47,10 +99,10 @@ color: #3366CC;
   <widget class="QLabel" name="label_title">
    <property name="geometry">
     <rect>
-     <x>710</x>
-     <y>510</y>
-     <width>81</width>
-     <height>81</height>
+     <x>740</x>
+     <y>540</y>
+     <width>51</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -63,42 +115,11 @@ color: #3366CC;
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_username">
+  <widget class="QPushButton" name="pushButton_order">
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>10</y>
-     <width>121</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">text-align: right;
-background-color: rgb(255, 255, 255);
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textEdit_bookDetails">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>110</y>
-     <width>240</width>
-     <height>180</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_submit">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>370</y>
+     <x>190</x>
+     <y>430</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -119,16 +140,16 @@ border: 1px solid #000000;
 border-radius: 4px;</string>
    </property>
    <property name="text">
-    <string>Edit</string>
+    <string>Order</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_bookImg">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>110</y>
-     <width>180</width>
-     <height>250</height>
+     <x>170</x>
+     <y>160</y>
+     <width>151</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -138,35 +159,20 @@ border-radius: 4px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_home">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>75</width>
-     <height>24</height>
+     <x>350</x>
+     <y>200</y>
+     <width>291</width>
+     <height>181</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Italic Outline Art</family>
-     <pointsize>12</pointsize>
-     <bold>false</bold>
-     <underline>true</underline>
-    </font>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: 0;
-border-radius: 15px;
-border-color: 0;
-color: #3366CC;
-</string>
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>Home</string>
+    <string/>
    </property>
   </widget>
  </widget>

@@ -1,6 +1,7 @@
 #include "member_catalogue_screen.h"
 #include "ui_member_catalogue_screen.h"
 #include "member_home_screen.h"
+#include "classes.h"
 
 member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
     QWidget(parent),
@@ -19,6 +20,9 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
     int w = ui->label_title->width();
     int h = ui->label_title->height();
     ui->label_title->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
+
+    //construct username in top right corner
+    ui->label_username->setText(User::userName());
 }
 
 member_catalogue_screen::~member_catalogue_screen()

@@ -1,10 +1,13 @@
 #include "admin_home_screen.h"
 #include "ui_admin_home_screen.h"
-#include <QPixmap>
 #include "add_new_book_screen.h"
 #include "admin_catalogue_screen.h"
 #include "add_new_member_screen.h"
 #include "member_list_screen.h"
+#include "classes.h"
+
+#include <QPixmap>
+
 
 admin_home_screen::admin_home_screen(QWidget *parent) :
     QWidget(parent),
@@ -16,25 +19,37 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
     this->setStyleSheet("background-color: white;");
     this->setWindowTitle("Admin Home");
 
-    //Setting button images
-    QIcon button1_icon("://img/menu.label1.png");
-    ui->pushButton_img_1->setIcon(button1_icon);
-
-    QIcon button2_icon("://img/menu.label2.png");
-    ui->pushButton_img_2->setIcon(button2_icon);
-
-    QIcon button3_icon("://img/menu.label3.png");
-    ui->pushButton_img_3->setIcon(button3_icon);
-
-    QIcon button4_icon("://img/menu.label4.png");
-    ui->pushButton_img_4->setIcon(button4_icon);
+//    QPixmap *image = new QPixmap(":/img/menu.label1.png");
+//    QIcon icon(*image);
+//    QSize iconSize(image->width(), image->height());
+    ui->pushButton->setIcon(QIcon(":/img/menu.label1.png"));
+    ui->pushButton->setIconSize(QSize(180,140));
 
     //Setting logo images
-    QPixmap headerlogo_pix(":/img/homescreen-label.PNG");
-    ui->label_img->setPixmap(headerlogo_pix);
+    QPixmap pix(":/img/library.label.png");
+    int w = ui->label_title->width();
+    int h = ui->label_title->height();
+    ui->label_title->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
 
-    QPixmap footerlogo_pix(":/img/library.label.png");
-    ui->label_img_2->setPixmap(footerlogo_pix);
+    QPixmap pix2(":/img/homescreen-label.PNG");
+    int w2 = ui->label_heading->width();
+    int h2 = ui->label_heading->height();
+    ui->label_heading->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
+
+    //Setting button icons
+    ui->pushButton->setIcon(QIcon(":/img/menu.label1.png"));
+    ui->pushButton->setIconSize(QSize(190,130));
+
+    ui->pushButton_2->setIcon(QIcon(":/img/menu.label2.png"));
+    ui->pushButton_2->setIconSize(QSize(190,130));
+
+    ui->pushButton_3->setIcon(QIcon(":/img/menu.label3.png"));
+    ui->pushButton_3->setIconSize(QSize(190,130));
+
+    ui->pushButton_4->setIcon(QIcon(":/img/menu.label4.png"));
+    ui->pushButton_4->setIconSize(QSize(190,130));
+
+    ui->label_username->setText(User::userName());
 }
 
 admin_home_screen::~admin_home_screen()
@@ -44,62 +59,67 @@ admin_home_screen::~admin_home_screen()
 
 //Home screen navigation to other screens
 
-//Navigate to add new book screen
+
+void admin_home_screen::on_pushButton_addNewBook_clicked()
+{
+    add_new_book_screen *ptr = new class add_new_book_screen;
+    ptr->show();
+    close();
+}
+
+
 void admin_home_screen::on_pushButton_clicked()
 {
-    add_new_book_screen *_add_new_book_screen = new add_new_book_screen;
-    _add_new_book_screen->show();
+    add_new_book_screen *ptr = new class add_new_book_screen;
+    ptr->show();
     close();
 }
-void admin_home_screen::on_button_img_1_clicked()
+
+
+void admin_home_screen::on_pushButton_modifyCatalogue_clicked()
 {
-    add_new_book_screen *_add_new_book_screen = new add_new_book_screen;
-    _add_new_book_screen->show();
+    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
+    ptr->show();
     close();
 }
 
 
-//Navigate to admin catalogue screen / modify catalogue screen
 void admin_home_screen::on_pushButton_2_clicked()
 {
-    admin_catalogue_screen *_admin_catalogue_screen = new admin_catalogue_screen;
-    _admin_catalogue_screen->show();
-    close();
-
-}
-void admin_home_screen::on_button_img_2_clicked()
-{
-    admin_catalogue_screen *_admin_catalogue_screen = new admin_catalogue_screen;
-    _admin_catalogue_screen->show();
+    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
+    ptr->show();
     close();
 }
 
 
-//Navigate to add new member screen
 void admin_home_screen::on_pushButton_3_clicked()
 {
-    add_new_member_screen *_add_new_member_screen = new add_new_member_screen;
-    _add_new_member_screen->show();
+    add_new_member_screen *ptr = new class add_new_member_screen;
+    ptr->show();
     close();
 }
-void admin_home_screen::on_button_img_3_clicked()
+
+
+void admin_home_screen::on_pushButton_addNewMember_clicked()
 {
-    add_new_member_screen *_add_new_member_screen = new add_new_member_screen;
-    _add_new_member_screen->show();
+    add_new_member_screen *ptr = new class add_new_member_screen;
+    ptr->show();
     close();
 }
 
 
-//Navigate to member list screen / modify member screen
 void admin_home_screen::on_pushButton_4_clicked()
 {
-    member_list_screen *_member_list_screen = new member_list_screen;
-    _member_list_screen->show();
+    member_list_screen *ptr = new class member_list_screen;
+    ptr->show();
     close();
 }
-void admin_home_screen::on_button_img_4_clicked()
+
+
+void admin_home_screen::on_pushButton_modifyMember_clicked()
 {
-    member_list_screen *_member_list_screen = new member_list_screen;
-    _member_list_screen->show();
+    member_list_screen *ptr = new class member_list_screen;
+    ptr->show();
     close();
 }
+
