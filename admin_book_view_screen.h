@@ -12,7 +12,7 @@ class admin_book_view_screen : public QWidget
     Q_OBJECT
 
 public:
-    explicit admin_book_view_screen(QWidget *parent = nullptr);
+    explicit admin_book_view_screen(QString id, QWidget *parent = nullptr);
     ~admin_book_view_screen();
 
 private slots:

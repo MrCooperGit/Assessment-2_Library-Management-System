@@ -3,6 +3,8 @@
 #include "admin_home_screen.h"
 #include "member_list_screen.h"
 #include "add_new_book_screen.h"
+#include "edit_book_screen.h"
+#include "admin_book_view_screen.h"
 #include "classes.h"
 
 
@@ -10,6 +12,8 @@
 #include <QMessageBox>
 #include <QScrollArea>
 #include <QPixmap>
+#include <QPalette>
+#include <QBrush>
 
 bool searched = false;
 QString searchText;
@@ -60,6 +64,8 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
     int img_W = 50, img_H = 80;
 
+    int book_btn_X, book_btn_Y;
+
     //Bool to skip first line of file which is blank
     bool firstLine = true;
 
@@ -91,57 +97,71 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
             if (searched == false){
 
                 //Creating image for book
-
                 if (title.contains("The Hobbit")){
 
-                    QLabel *label_title_img = new QLabel(this);
+                    QLabel *label_title_img = new QLabel(ui->scrollArea);
                     label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/Hobbit.book.jpg");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
                 } else if (title.contains("To Kill A Mockingbird")){
 
-                    QLabel *label_title_img = new QLabel(this);
+                    QLabel *label_title_img = new QLabel(ui->scrollArea);
                     label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/Mockingbird.book.jpg");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+
+
                 }
                 else {
 
                     //Default image that shows if one isn't set
-                    QLabel *label_title_img = new QLabel(this);
+                    QLabel *label_title_img = new QLabel(ui->scrollArea);
                     label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img("://img/noImage.png");
                     label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+
+
                 }
 
 
-                //Creating Button for book
-                QPushButton *edit_btn = new QPushButton(this);
+                //Creating Edit Button for book
+                QPushButton *edit_btn = new QPushButton(ui->scrollArea);
                 edit_btn->setText("Edit");
                 edit_btn->setGeometry((defX + btn_offset_X), (defY + offset_Y), btnW, defH);
 
 
+
+                connect(edit_btn, SIGNAL(clicked(bool)), this, SLOT(edit_btn_clicked()));
+
                 //Creating labels for the title, author, id
-                QLabel *label_title = new QLabel(this);
+                QLabel *label_title = new QLabel(ui->scrollArea);
                 label_title->setText(title);
                 label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+
+
+                book_btn_X = defX;
+                book_btn_Y = defY;
 
                 defX = label_title->x();
                 defY = label_title->y();
                 defW = label_title->width();
                 defH = label_title->height();
 
-                QLabel *label_author = new QLabel(this);
+
+
+                QLabel *label_author = new QLabel(ui->scrollArea);
                 label_author->setText(author);
                 label_author->setGeometry(defX, (defY + offset_Y), defW, defH);
+
 
                 defX = label_author->x();
                 defY = label_author->y();
                 defW = label_author->width();
                 defH = label_author->height();
 
-                QLabel *label_id = new QLabel(this);
+                QLabel *label_id = new QLabel(ui->scrollArea);
                 label_id->setText(id);
                 label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
 
@@ -149,6 +169,16 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                 defY = label_id->y() + offset_Y;
                 defW = label_id->width();
                 defH = label_id->height();
+
+                //Creating view book screen button
+                QPushButton *book_btn = new QPushButton(ui->scrollArea);
+                book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
+
+                book_btn->setFlat(true);
+
+                connect(book_btn, SIGNAL(clicked(bool)), this, SLOT(book_btn_clicked()));
+
+                ui->scrollArea->verticalScrollBarPolicy();
             }
         }
 
@@ -267,6 +297,21 @@ admin_catalogue_screen::~admin_catalogue_screen()
 void admin_catalogue_screen::on_pushButton_home_clicked()
 {
     admin_home_screen *ptr = new class admin_home_screen;
+    ptr->show();
+    close();
+}
+
+void admin_catalogue_screen::edit_btn_clicked(){
+
+    edit_book_screen *ptr = new class edit_book_screen;
+    ptr->show();
+    close();
+}
+
+void admin_catalogue_screen::book_btn_clicked(){
+
+
+    admin_book_view_screen *ptr = new class admin_book_view_screen(searchText); //REPLACE SEARCH TEXT
     ptr->show();
     close();
 }

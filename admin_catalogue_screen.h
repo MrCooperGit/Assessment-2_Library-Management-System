@@ -26,6 +26,10 @@ private slots:
 
     void on_label_username_windowTitleChanged(const QString &title);
 
+    void edit_btn_clicked();
+
+    void book_btn_clicked();
+
 private:
     Ui::admin_catalogue_screen *ui;
 };

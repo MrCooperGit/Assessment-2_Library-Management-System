@@ -4,11 +4,14 @@
 #include "admin_catalogue_screen.h"
 #include "classes.h"
 
-admin_book_view_screen::admin_book_view_screen(QWidget *parent) :
+admin_book_view_screen::admin_book_view_screen(QString id, QWidget *parent) :
     QWidget(parent),
+
     ui(new Ui::admin_book_view_screen)
 {
     ui->setupUi(this);
+
+    QString target_id = id;
 
     //Basic window style
     this->setStyleSheet("background-color: white;");
