@@ -40,6 +40,7 @@ public:
     static int iD;
 
     Item();
+    static int getItemId();
 };
 
 
@@ -49,7 +50,6 @@ class Book : public Item {
 
 public:
     Book();
-    static int getItemId();
 };
 
 #endif // CLASSES_H

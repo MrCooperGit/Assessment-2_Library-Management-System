@@ -24,7 +24,7 @@ int User::getUserId(){
         iD++;
     }
     file.close();
-    return iD + 43682;
+    return iD + 10001;
 }
 
 QString User::userName(){
@@ -34,4 +34,23 @@ QString User::userName(){
 void User::setName(QString fName, QString lName){
     User::firstName = fName;
     User::lastName = lName;
+}
+
+int Item::getItemId(){
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("books.csv")); //file is now specific to the user's directory
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qCritical() << file.errorString();
+        return 0;
+    }
+
+    while(!file.atEnd()){
+        file.readLine();
+        iD++;
+    }
+    file.close();
+    return iD + 10001;
 }
