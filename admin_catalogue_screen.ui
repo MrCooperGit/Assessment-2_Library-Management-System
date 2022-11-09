@@ -242,9 +242,15 @@ border: 2px solid #000000;
     <rect>
      <x>70</x>
      <y>130</y>
-     <width>691</width>
-     <height>384</height>
+     <width>621</width>
+     <height>391</height>
     </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOn</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContents</enum>
    </property>
    <property name="widgetResizable">
     <bool>true</bool>
@@ -254,10 +260,11 @@ border: 2px solid #000000;
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>689</width>
-      <height>382</height>
+      <width>605</width>
+      <height>389</height>
      </rect>
     </property>
+    <layout class="QGridLayout" name="gridLayout"/>
    </widget>
   </widget>
  </widget>
