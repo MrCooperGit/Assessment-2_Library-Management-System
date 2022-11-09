@@ -2,6 +2,7 @@
 #define ADMIN_CATALOGUE_SCREEN_H
 
 #include <QWidget>
+#include <QLabel>
 
 namespace Ui {
 class admin_catalogue_screen;
@@ -25,6 +26,10 @@ private slots:
     void on_pushButton_search_clicked();
 
     void on_label_username_windowTitleChanged(const QString &title);
+
+    void edit_btn_clicked(QString);
+
+    void book_btn_clicked();
 
 private:
     Ui::admin_catalogue_screen *ui;
