@@ -1,11 +1,31 @@
 #ifndef YOUR_ITEMS_SCREEN_H
 #define YOUR_ITEMS_SCREEN_H
 
+#include <QWidget>
 
-class Your_Items_Screen
+namespace Ui {
+class your_items_screen;
+}
+
+class your_items_screen : public QWidget
 {
+    Q_OBJECT
+
 public:
-    Your_Items_Screen();
+    explicit your_items_screen(QWidget *parent = nullptr);
+    ~your_items_screen();
+
+private slots:
+    void on_pushButton_catalogue_clicked();
+
+    void on_pushButton_home_clicked();
+
+    void currentDate();
+
+private:
+    Ui::your_items_screen *ui;
+
+    QTimer *timer;
 };
 
 #endif // YOUR_ITEMS_SCREEN_H
