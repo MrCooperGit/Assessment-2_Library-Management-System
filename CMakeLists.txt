@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Sql Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -47,19 +47,14 @@ set(PROJECT_SOURCES
         member_catalogue_screen.cpp
         member_catalogue_screen.ui
         edit_member_screen.h
-        edit_member_screen.cpp
-        edit_member_screen.ui
+        edit_member_screen.cpp edit_member_screen.ui
         admin_book_view_screen.h
         admin_book_view_screen.cpp
         admin_book_view_screen.ui
-        member_book_order_screen.h
-        member_book_order_screen.cpp
-        member_book_order_screen.ui
+        member_book_order_screen.h member_book_order_screen.cpp member_book_order_screen.ui
         resource.qrc
-        classes.h
-        classes.cpp
-        file_functions.h
-        file_functions.cpp
+        classes.h classes.cpp
+        file_functions.h file_functions.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -86,6 +81,12 @@ else()
 endif()
 
 target_link_libraries(Library_Management_System PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(Library_Management_System PUBLIC
+    Qt::Core
+    Qt::Gui
+    Qt::Sql
+    Qt::Widgets
+)
 
 set_target_properties(Library_Management_System PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

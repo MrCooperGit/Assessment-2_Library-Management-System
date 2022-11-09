@@ -2,14 +2,12 @@
 #include "classes.h"
 
 #include <QApplication>
-#include <QFile>
-#include <QTextStream>
-#include <QMap>
-#include <QSharedPointer>
+
 
 int User::iD = 0;
 int Item::iD = 0;
 QString User::firstName, User::lastName;
+
 
 int main(int argc, char *argv[])
 {

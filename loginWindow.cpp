@@ -2,6 +2,7 @@
 #include "./ui_loginWindow.h"
 #include "classes.h"
 #include "admin_home_screen.h"
+#include "edit_member_screen.h"
 #include "member_home_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
@@ -21,6 +22,7 @@
 #include <QDateTime>
 #include <QDebug>
 #include <QDir>
+
 
 
 LoginWindow::LoginWindow(QWidget *parent)
@@ -136,13 +138,19 @@ void LoginWindow::on_pushButton_login_clicked()
 
 void LoginWindow::on_pushButton_register_clicked()
 {
-
-
+    //loop requires that all fields have data
+    while(!ui->lineEdit_email->text().isEmpty() &&
+          !ui->lineEdit_firstName->text().isEmpty() &&
+          !ui->lineEdit_lastName->text().isEmpty() &&
+          !ui->lineEdit_password2->text().isEmpty() &&
+          (ui->radioButton_admin->isChecked() || ui->radioButton_member->isChecked()))
+    {
     QString email = ui->lineEdit_email->text(); //String variables which store the text in the lineEdit boxes
     QString firstName = ui->lineEdit_firstName->text();
     QString lastName = ui->lineEdit_lastName->text();
     QString password = ui->lineEdit_password2->text();
     QString userType; //Below radio buttons will determine the string for this variable
+
     if(ui->radioButton_admin->isChecked()){
         userType.replace(0,99,"admin");
     }
@@ -171,23 +179,34 @@ void LoginWindow::on_pushButton_register_clicked()
         qCritical() << file.errorString(); //displays error if file not opened
         return;
     }
+
     QTextStream stream(&file); //declare variable to store the stream from file
-    stream << "\n" << email << "," << User::getUserId() << "," << firstName << "," << lastName << "," << userType << "," << password;
+
+    int userId = User::getUserId(); //generate userId
+
     //stream pastes the variables into the .csv file with /n for new line and ',' for next cell
+    stream << "\n" << email << "," << userId << "," << firstName << "," << lastName << "," << userType << "," << password;
     file.close();
 
+    ui->lineEdit_username->setText(ui->lineEdit_email->text());
     ui->lineEdit_email->clear();
     ui->lineEdit_firstName->clear();
     ui->lineEdit_lastName->clear();
     ui->lineEdit_password2->clear();
 
     QMessageBox::information(this, "Details", "Registration successful"); //displays message box showing success
-}
 
+    User::iD = 0; //Reset userId calculator
+
+    return;
+    }
+
+    QMessageBox::critical(this, "Critical", "Please ensure all fields are entered!");
+}
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_book_screen *ptr = new class add_new_book_screen;
+    edit_member_screen *ptr = new class edit_member_screen;
     ptr->show();
     close();
 }
