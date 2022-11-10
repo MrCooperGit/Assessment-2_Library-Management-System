@@ -206,7 +206,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    edit_member_screen *ptr = new class edit_member_screen;
+    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
     ptr->show();
     close();
 }
