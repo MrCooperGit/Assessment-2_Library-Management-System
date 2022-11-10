@@ -54,7 +54,7 @@ set(PROJECT_SOURCES
         member_book_order_screen.h member_book_order_screen.cpp member_book_order_screen.ui
         resource.qrc
         classes.h classes.cpp
-        file_functions.h file_functions.cpp
+        employeeinfo.cpp employeeinfo.h employeeinfo.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

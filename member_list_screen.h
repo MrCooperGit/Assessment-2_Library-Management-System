@@ -22,6 +22,8 @@ private slots:
 
     void on_pushButton_addNewMember_clicked();
 
+    void on_pushButton_search_clicked();
+
 private:
     Ui::member_list_screen *ui;
 };

@@ -25,9 +25,9 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //QScrollArea *scrollArea = new QScrollArea;
-    //scrollArea->setWidget(this);
-    //scrollArea->setGeometry(0, 0, this->width(), this->height());
+    QScrollArea *scrollArea = new QScrollArea;
+    scrollArea->setWidget(this);
+    scrollArea->setGeometry(0, 0, this->width(), this->height());
 
 
     //Basic window style
