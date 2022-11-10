@@ -4,6 +4,8 @@
 #include "admin_catalogue_screen.h"
 #include "classes.h"
 
+#include <QMessageBox>
+
 admin_book_view_screen::admin_book_view_screen(QString id, QWidget *parent) :
     QWidget(parent),
 
@@ -11,7 +13,7 @@ admin_book_view_screen::admin_book_view_screen(QString id, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QString target_id = id;
+    QMessageBox::information(this, "title", id);
 
     //Basic window style
     this->setStyleSheet("background-color: white;");

@@ -186,11 +186,17 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                 //Creating view book screen button
                 QPushButton *book_btn = new QPushButton(widget);
                 book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
-                edit_btn->setCursor(Qt::PointingHandCursor);
 
                 book_btn->setFlat(true);
 
-                connect(book_btn, SIGNAL(clicked(bool)), this, SLOT(book_btn_clicked()));
+                //Connect book button signal and slot
+                QSignalMapper *book_btn_signalMapper = new QSignalMapper;
+                connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(book_btn_clicked(QString)));
+
+                connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
+
+                book_btn_signalMapper->setMapping(book_btn, id);
+
 
                 ui->scrollArea->verticalScrollBarPolicy();
 
@@ -296,6 +302,9 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                     label_title->setText(title);
                     label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
 
+                    book_btn_X = defX;
+                    book_btn_Y = defY;
+
                     defX = label_title->x();
                     defY = label_title->y();
                     defW = label_title->width();
@@ -320,21 +329,30 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                     defH = label_id->height();
 
                     //Connect edit button signal and slot
-                    QSignalMapper *signalMapper = new QSignalMapper;
-                    connect(signalMapper, SIGNAL(mappedString(QString)), this, SLOT(edit_btn_clicked(QString)));
+                    QSignalMapper *edit_btn_signalMapper = new QSignalMapper;
+                    connect(edit_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(edit_btn_clicked(QString)));
 
-                    connect(edit_btn, SIGNAL(clicked(bool)), signalMapper, SLOT(map()));
+                    connect(edit_btn, SIGNAL(clicked(bool)), edit_btn_signalMapper, SLOT(map()));
 
-                    signalMapper->setMapping(edit_btn, id);
+                    edit_btn_signalMapper->setMapping(edit_btn, id);
+
 
                     //Creating view book screen button
                     QPushButton *book_btn = new QPushButton(widget);
                     book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
-                    edit_btn->setCursor(Qt::PointingHandCursor);
+                    book_btn->setCursor(Qt::PointingHandCursor);
+
+
+                    //Connect book button signal and slot
+                    QSignalMapper *book_btn_signalMapper = new QSignalMapper;
+                    connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(book_btn_clicked(QString)));
+
+                    connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
+
+                    book_btn_signalMapper->setMapping(book_btn, id);
+
 
                     book_btn->setFlat(true);
-
-                    connect(book_btn, SIGNAL(clicked(bool)), this, SLOT(book_btn_clicked()));
 
                     ui->scrollArea->verticalScrollBarPolicy();
 
@@ -380,9 +398,11 @@ void admin_catalogue_screen::edit_btn_clicked(QString id){
 
 }
 
-void admin_catalogue_screen::book_btn_clicked(){
+void admin_catalogue_screen::book_btn_clicked(QString id){
 
-
+    admin_book_view_screen *ptr = new admin_book_view_screen(id);
+    ptr->show();
+    close();
 
 }
 
