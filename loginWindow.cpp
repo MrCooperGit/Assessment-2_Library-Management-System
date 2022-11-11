@@ -13,6 +13,7 @@
 #include "admin_book_view_screen.h"
 #include "your_items_screen.h"
 #include "member_book_order_screen.h"
+#include "employeeinfo.h"
 
 #include <QFile>
 #include <QTextStream>
@@ -206,7 +207,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
+    employeeinfo *ptr = new class employeeinfo;
     ptr->show();
     close();
 }
