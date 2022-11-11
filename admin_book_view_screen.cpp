@@ -2,10 +2,13 @@
 #include "ui_admin_book_view_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
+#include "edit_book_screen.h"
 #include "classes.h"
 
 #include <QMessageBox>
 #include <QFile>
+
+QString passedID;
 
 admin_book_view_screen::admin_book_view_screen(QString bookInfo, QWidget *parent) :
     QWidget(parent),
@@ -41,13 +44,13 @@ admin_book_view_screen::admin_book_view_screen(QString bookInfo, QWidget *parent
         return;
     }
 
-
-    QString title;
-    QString author;
+    Book targetBook;
     QString id;
 
-    QString passedID = bookInfo.split(",").first();
-    QString img_ref = bookInfo.split(",").last();
+    passedID = bookInfo.split(",").first();
+    targetBook.setCoverImgRef(bookInfo.split(",").last());
+
+
 
     while(!file.atEnd()){
 
@@ -63,8 +66,8 @@ admin_book_view_screen::admin_book_view_screen(QString bookInfo, QWidget *parent
         //If the id passed to this window matches an id in the file
         if (passedID == id){
 
-            title = fileList.value(fileList.length()-2);
-            author = fileList.value(fileList.length()-1);
+            targetBook.setTitle(fileList[1]);
+            targetBook.setAuthor(fileList[2]);
 
             break;
         }
@@ -73,11 +76,11 @@ admin_book_view_screen::admin_book_view_screen(QString bookInfo, QWidget *parent
 
     file.close();
 
-    ui->label_bookTitle->setText(title);
-    ui->label_bookAuthor->setText(author);
+    ui->label_bookTitle->setText(targetBook.getTitle());
+    ui->label_bookAuthor->setText(targetBook.getAuthor());
     ui->label_bookID->setText(passedID);
 
-    QPixmap pix2(img_ref);
+    QPixmap pix2(targetBook.getCoverImgRef());
     int w2 = ui->label_bookImg->width();
     int h2 = ui->label_bookImg->height();
     ui->label_bookImg->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
@@ -107,6 +110,10 @@ void admin_book_view_screen::on_pushButton_catalogue_clicked()
 
 void admin_book_view_screen::on_pushButton_edit_clicked()
 {
+
+    edit_book_screen *ptr = new edit_book_screen(passedID);
+    ptr->show();
+    close();
 
 }
 

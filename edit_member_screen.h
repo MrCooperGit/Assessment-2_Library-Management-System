@@ -15,6 +15,9 @@ public:
     explicit edit_member_screen(QWidget *parent = nullptr);
     ~edit_member_screen();
 
+private slots:
+
+
 private:
     Ui::edit_member_screen *ui;
 };

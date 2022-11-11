@@ -203,7 +203,7 @@ color: #3366CC;
     <string>Enter New Details:</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>150</x>
