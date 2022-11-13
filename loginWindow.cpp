@@ -14,6 +14,7 @@
 #include "admin_book_view_screen.h"
 #include "your_items_screen.h"
 #include "member_book_order_screen.h"
+#include "employeeinfo.h"
 
 #include <QFile>
 #include <QTextStream>
