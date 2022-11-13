@@ -53,7 +53,7 @@ background-color: rgb(255, 255, 255);
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>200</x>
      <y>370</y>
      <width>101</width>
      <height>20</height>
@@ -63,6 +63,7 @@ background-color: rgb(255, 255, 255);
     <font>
      <family>Italic Outline Art</family>
      <pointsize>10</pointsize>
+     <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
@@ -156,7 +157,7 @@ color: #3366CC;
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>500</x>
      <y>370</y>
      <width>111</width>
      <height>20</height>
@@ -166,6 +167,7 @@ color: #3366CC;
     <font>
      <family>Italic Outline Art</family>
      <pointsize>10</pointsize>
+     <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
@@ -191,9 +193,9 @@ color: #3366CC;
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>140</x>
      <y>400</y>
-     <width>203</width>
+     <width>207</width>
      <height>129</height>
     </rect>
    </property>
@@ -202,6 +204,14 @@ color: #3366CC;
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLabel" name="label_6">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="text">
          <string>ID Number</string>
         </property>
@@ -209,6 +219,11 @@ color: #3366CC;
       </item>
       <item>
        <widget class="QLabel" name="label_3">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Email</string>
         </property>
@@ -216,6 +231,11 @@ color: #3366CC;
       </item>
       <item>
        <widget class="QLabel" name="label_4">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>First name</string>
         </property>
@@ -223,6 +243,11 @@ color: #3366CC;
       </item>
       <item>
        <widget class="QLabel" name="label_5">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Last name</string>
         </property>
@@ -234,29 +259,68 @@ color: #3366CC;
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label_idNumber">
+        <property name="minimumSize">
+         <size>
+          <width>133</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_email">
+        <property name="minimumSize">
+         <size>
+          <width>133</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_firstName">
+        <property name="minimumSize">
+         <size>
+          <width>133</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLabel" name="label_lastName">
+        <property name="minimumSize">
+         <size>
+          <width>133</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -267,9 +331,9 @@ color: #3366CC;
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>125</x>
      <y>170</y>
-     <width>781</width>
+     <width>550</width>
      <height>181</height>
     </rect>
    </property>
@@ -277,7 +341,7 @@ color: #3366CC;
   <widget class="QPushButton" name="pushButton_save">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>520</x>
      <y>530</y>
      <width>75</width>
      <height>24</height>
@@ -290,7 +354,7 @@ color: #3366CC;
   <widget class="QWidget" name="layoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>450</x>
      <y>400</y>
      <width>203</width>
      <height>129</height>
@@ -301,6 +365,11 @@ color: #3366CC;
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <widget class="QLabel" name="label_7">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>ID Number</string>
         </property>
@@ -308,6 +377,11 @@ color: #3366CC;
       </item>
       <item>
        <widget class="QLabel" name="label_8">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Email</string>
         </property>
@@ -315,6 +389,11 @@ color: #3366CC;
       </item>
       <item>
        <widget class="QLabel" name="label_9">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>First name</string>
         </property>
@@ -322,6 +401,11 @@ color: #3366CC;
       </item>
       <item>
        <widget class="QLabel" name="label_10">
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="text">
          <string>Last name</string>
         </property>
@@ -332,16 +416,50 @@ color: #3366CC;
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QLineEdit" name="lineEdit_idNumber"/>
+       <widget class="QLabel" name="label_idNumber2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>27</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_email"/>
+       <widget class="QLineEdit" name="lineEdit_email">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_firstName"/>
+       <widget class="QLineEdit" name="lineEdit_firstName">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_lastName"/>
+       <widget class="QLineEdit" name="lineEdit_lastName">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>27</height>
+         </size>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
