@@ -79,149 +79,146 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
     while (!file.atEnd()){
 
         QString line = file.readLine();
-        QString title;
-        QString author;
         QString id;
-        QString cover_imgRef;
 
-
-        if (!firstLine){
-
-                QString searchText = ui->lineEdit_search->displayText();
-
-                title.clear();  author.clear();  id.clear();  //Clearing strings from previous line of file
-
-                //Making a string list to seperate each column of the file
-                QStringList fileList;
-                fileList.clear();
-                fileList = line.split(",");
-
-                //Transfer data from file into variables
-                title = fileList.value(fileList.length()-2);
-                author = fileList.value(fileList.length()-1);
-                id = fileList.value(fileList.length()-3);
-
-
-                if (searched == false){
-
-                    //Creating image for book
-                    if (title.contains("The Hobbit")){
-
-                        cover_imgRef = "://img/Hobbit.book.jpg";
-                        QLabel *label_title_img = new QLabel(widget);
-                        label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
-                        QPixmap title_img(cover_imgRef);
-                        label_title_img->setPixmap(title_img.scaled(img_W, img_H));
-
-                    } else if (title.contains("To Kill A Mockingbird")){
-
-                        cover_imgRef = "://img/Mockingbird.book.jpg";
-                        QLabel *label_title_img = new QLabel(widget);
-                        label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
-                        QPixmap title_img(cover_imgRef);
-                        label_title_img->setPixmap(title_img.scaled(img_W, img_H));
-
-
-                    }
-                    else {
-
-                        //Default image that shows if one isn't set
-                        cover_imgRef = "://img/noImage.png";
-                        QLabel *label_title_img = new QLabel(widget);
-                        label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
-                        QPixmap title_img(cover_imgRef);
-                        label_title_img->setPixmap(title_img.scaled(img_W, img_H));
-
-
-                    }
-
-
-                    //Creating Edit Button for book
-                    QPushButton *edit_btn = new QPushButton(widget);
-                    edit_btn->setText("Edit");
-                    edit_btn->setGeometry((defX + btn_offset_X), (defY + offset_Y), btnW, defH);
-                    edit_btn->setCursor(Qt::PointingHandCursor);
+        Book newBook;
 
 
 
-                    //Creating labels for the title, author, id
-                    QLabel *label_title = new QLabel(widget);
-                    label_title->setText(title);
-                    label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
+            QString searchText = ui->lineEdit_search->displayText();
+
+            newBook.getTitle().clear();  newBook.getAuthor().clear();  id.clear();  //Clearing strings from previous line of file
+
+            //Making a string list to seperate each column of the file
+            QStringList fileList;
+            fileList.clear();
+            fileList = line.split(",");
+
+            //Transfer data from file into variables
+            newBook.setTitle(fileList.value(fileList.length()-2));
+            newBook.setAuthor(fileList.value(fileList.length()-1));
+            id = fileList.value(fileList.length()-3);
 
 
+            if (searched == false){
 
-                    book_btn_X = defX;
-                    book_btn_Y = defY;
+                //Creating image for book
+                if (newBook.getTitle().contains("The Hobbit")){
 
-                    defX = label_title->x();
-                    defY = label_title->y();
-                    defW = label_title->width();
-                    defH = label_title->height();
+                    newBook.setCoverImgRef("://img/Hobbit.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
+                } else if (newBook.getTitle().contains("To Kill A Mockingbird")){
 
+                    newBook.setCoverImgRef("://img/Mockingbird.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
-                    QLabel *label_author = new QLabel(widget);
-                    label_author->setText(author);
-                    label_author->setGeometry(defX, (defY + offset_Y), defW, defH);
-
-
-                    defX = label_author->x();
-                    defY = label_author->y();
-                    defW = label_author->width();
-                    defH = label_author->height();
-
-                    QLabel *label_id = new QLabel(widget);
-                    label_id->setText(id);
-                    label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
-
-                    defX = label_id->x();
-                    defY = label_id->y() + offset_Y;
-                    defW = label_id->width();
-                    defH = label_id->height();
-
-
-                    //Connect edit button signal and slot
-                    QSignalMapper *signalMapper = new QSignalMapper;
-                    connect(signalMapper, SIGNAL(mappedString(QString)), this, SLOT(edit_btn_clicked(QString)));
-
-                    connect(edit_btn, SIGNAL(clicked(bool)), signalMapper, SLOT(map()));
-
-                    signalMapper->setMapping(edit_btn, id);
-
-                    //Creating view book screen button
-                    QPushButton *book_btn = new QPushButton(widget);
-                    book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
-
-                    book_btn->setFlat(true);
-
-                    //Connect book button signal and slot
-                    QString book_view_info = id + "," + cover_imgRef;
-
-                    QSignalMapper *book_btn_signalMapper = new QSignalMapper;
-                    connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(book_btn_clicked(QString)));
-
-                    connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
-
-                    book_btn_signalMapper->setMapping(book_btn, book_view_info);
-
-
-                    ui->scrollArea->verticalScrollBarPolicy();
-
-                    label_title->layoutDirection();
-
-                    widget->setMinimumHeight(defY);
-
-                    ui->scrollArea->setWidget(widget);
-                    ui->scrollArea->verticalScrollBar();
-                    ui->scrollArea->ensureWidgetVisible(widget);
 
                 }
-        }
+                else {
 
-        firstLine = false;
+                    //Default image that shows if one isn't set
+                    newBook.setCoverImgRef("://img/noImage.png");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
-        }
+
+                }
+
+
+                //Creating Edit Button for book
+                QPushButton *edit_btn = new QPushButton(widget);
+                edit_btn->setText("Edit");
+                edit_btn->setGeometry((defX + btn_offset_X), (defY + offset_Y), btnW, defH);
+                edit_btn->setCursor(Qt::PointingHandCursor);
+
+
+
+                //Creating labels for the title, author, id
+                QLabel *label_title = new QLabel(widget);
+                label_title->setText(newBook.getTitle());
+                label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+
+
+                book_btn_X = defX;
+                book_btn_Y = defY;
+
+                defX = label_title->x();
+                defY = label_title->y();
+                defW = label_title->width();
+                defH = label_title->height();
+
+
+
+                QLabel *label_author = new QLabel(widget);
+                label_author->setText(newBook.getAuthor());
+                label_author->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+
+                defX = label_author->x();
+                defY = label_author->y();
+                defW = label_author->width();
+                defH = label_author->height();
+
+                QLabel *label_id = new QLabel(widget);
+                label_id->setText(id);
+                label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+                defX = label_id->x();
+                defY = label_id->y() + offset_Y;
+                defW = label_id->width();
+                defH = label_id->height();
+
+
+                //Connect edit button signal and slot
+                QSignalMapper *signalMapper = new QSignalMapper;
+                connect(signalMapper, SIGNAL(mappedString(QString)), this, SLOT(edit_btn_clicked(QString)));
+
+                connect(edit_btn, SIGNAL(clicked(bool)), signalMapper, SLOT(map()));
+
+                signalMapper->setMapping(edit_btn, id);
+
+                //Creating view book screen button
+                QPushButton *book_btn = new QPushButton(widget);
+                book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
+
+                book_btn->setFlat(true);
+
+                //Connect book button signal and slot
+                QString book_view_info = id + "," + newBook.getCoverImgRef();
+
+                QSignalMapper *book_btn_signalMapper = new QSignalMapper;
+                connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(book_btn_clicked(QString)));
+
+                connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
+
+                book_btn_signalMapper->setMapping(book_btn, book_view_info);
+
+
+                ui->scrollArea->verticalScrollBarPolicy();
+
+                label_title->layoutDirection();
+
+                widget->setMinimumHeight(defY);
+
+                ui->scrollArea->setWidget(widget);
+                ui->scrollArea->verticalScrollBar();
+                ui->scrollArea->ensureWidgetVisible(widget);
+
+            }
+
+    firstLine = false;
+
+    }
 
 
     file.close();
@@ -252,152 +249,146 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
         QString line = file.readLine();
 
-        if (!firstLine){
+        QString id;
 
-            QString title;
-            QString author;
-            QString id;
-            QString cover_imgRef;
+        Book newBook;
 
-            title.clear();  author.clear();  id.clear();  //Clearing strings from previous line of file
+        newBook.getTitle().clear();  newBook.getAuthor().clear();  id.clear();  //Clearing strings from previous line of file
 
-            //Making a string list to seperate each column of the file
-            QStringList fileList;
-            fileList.clear();
-            fileList = line.split(",");
+        //Making a string list to seperate each column of the file
+        QStringList fileList;
+        fileList.clear();
+        fileList = line.split(",");
 
-            //Transfer data from file into variables
-            title = fileList.value(fileList.length()-2);
-            author = fileList.value(fileList.length()-1);
-            id = fileList.value(fileList.length()-3);
+        //Transfer data from file into variables
+        newBook.setTitle(fileList.value(fileList.length()-2));
+        newBook.setAuthor(fileList.value(fileList.length()-1));
+        id = fileList.value(fileList.length()-3);
 
 
-            if (searched == true) {
+        if (searched == true) {
 
-                ui->lineEdit_search->setText(searchText);
+            ui->lineEdit_search->setText(searchText);
 
-                if (title.contains(searchText)){
+            if (newBook.getTitle().toLower().contains(searchText.toLower())){
 
-                    numofItems++;
+                numofItems++;
 
-                    //Creating image for book
+                //Creating image for book
 
-                    if (title.contains("The Hobbit")){
+                if (newBook.getTitle().contains("The Hobbit")){
 
-                        cover_imgRef = "://img/Hobbit.book.jpg";
-                        QLabel *label_title_img = new QLabel(widget);
-                        label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
-                        QPixmap title_img(cover_imgRef);
-                        label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+                    newBook.setCoverImgRef("://img/Hobbit.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
 
-                    } else if (title.contains("To Kill A Mockingbird")){
+                } else if (newBook.getTitle().contains("To Kill A Mockingbird")){
 
-                        cover_imgRef = "://img/Mockingbird.book.jpg";
-                        QLabel *label_title_img = new QLabel(widget);
-                        label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
-                        QPixmap title_img(cover_imgRef);
-                        label_title_img->setPixmap(title_img.scaled(img_W, img_H));
-                    }
-                    else {
+                    newBook.setCoverImgRef("://img/Mockingbird.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+                }
+                else {
 
-                        //Default image that shows if one isn't set
-                        cover_imgRef = "://img/noImage.png";
-                        QLabel *label_title_img = new QLabel(widget);
-                        label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
-                        QPixmap title_img(cover_imgRef);
-                        label_title_img->setPixmap(title_img.scaled(img_W, img_H));
-                    }
-
-                    //Creating Edit Button for book
-                    QPushButton *edit_btn = new QPushButton(widget);
-                    edit_btn->setText("Edit");
-                    edit_btn->setGeometry((defX + btn_offset_X), (defY + offset_Y), btnW, defH);
-                    edit_btn->setCursor(Qt::PointingHandCursor);
-
-
-                    //Creating labels for the title, author, id
-                    QLabel *label_title = new QLabel(widget);
-                    label_title->setText(title);
-                    label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
-
-                    book_btn_X = defX;
-                    book_btn_Y = defY;
-
-                    defX = label_title->x();
-                    defY = label_title->y();
-                    defW = label_title->width();
-                    defH = label_title->height();
-
-                    QLabel *label_author = new QLabel(widget);
-                    label_author->setText(author);
-                    label_author->setGeometry(defX, (defY + offset_Y), defW, defH);
-
-                    defX = label_author->x();
-                    defY = label_author->y();
-                    defW = label_author->width();
-                    defH = label_author->height();
-
-                    QLabel *label_id = new QLabel(widget);
-                    label_id->setText(id);
-                    label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
-
-                    defX = label_id->x();
-                    defY = label_id->y() + offset_Y;
-                    defW = label_id->width();
-                    defH = label_id->height();
-
-                    //Connect edit button signal and slot
-                    QSignalMapper *edit_btn_signalMapper = new QSignalMapper;
-                    connect(edit_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(edit_btn_clicked(QString)));
-
-                    connect(edit_btn, SIGNAL(clicked(bool)), edit_btn_signalMapper, SLOT(map()));
-
-                    edit_btn_signalMapper->setMapping(edit_btn, id);
-
-
-                    //Creating view book screen button
-                    QPushButton *book_btn = new QPushButton(widget);
-                    book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
-                    book_btn->setCursor(Qt::PointingHandCursor);
-
-
-                    //Connect book button signal and slot
-                    QString book_view_info = id + "," + cover_imgRef;
-
-                    QSignalMapper *book_btn_signalMapper = new QSignalMapper;
-                    connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(book_btn_clicked(QString)));
-
-                    connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
-
-                    book_btn_signalMapper->setMapping(book_btn, book_view_info);
-
-
-                    book_btn->setFlat(true);
-
-                    ui->scrollArea->verticalScrollBarPolicy();
-
-                    label_title->layoutDirection();
-
-                    widget->setMinimumHeight(defY);
-
-                    ui->scrollArea->setWidget(widget);
-                    ui->scrollArea->verticalScrollBar();
-                    ui->scrollArea->ensureWidgetVisible(widget);
-
-
+                    //Default image that shows if one isn't set
+                    newBook.setCoverImgRef("://img/noImage.png");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
                 }
 
+                //Creating Edit Button for book
+                QPushButton *edit_btn = new QPushButton(widget);
+                edit_btn->setText("Edit");
+                edit_btn->setGeometry((defX + btn_offset_X), (defY + offset_Y), btnW, defH);
+                edit_btn->setCursor(Qt::PointingHandCursor);
+
+
+                //Creating labels for the title, author, id
+                QLabel *label_title = new QLabel(widget);
+                label_title->setText(newBook.getTitle());
+                label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+                book_btn_X = defX;
+                book_btn_Y = defY;
+
+                defX = label_title->x();
+                defY = label_title->y();
+                defW = label_title->width();
+                defH = label_title->height();
+
+                QLabel *label_author = new QLabel(widget);
+                label_author->setText(newBook.getAuthor());
+                label_author->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+                defX = label_author->x();
+                defY = label_author->y();
+                defW = label_author->width();
+                defH = label_author->height();
+
+                QLabel *label_id = new QLabel(widget);
+                label_id->setText(id);
+                label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
+
+                defX = label_id->x();
+                defY = label_id->y() + offset_Y;
+                defW = label_id->width();
+                defH = label_id->height();
+
+                //Connect edit button signal and slot
+                QSignalMapper *edit_btn_signalMapper = new QSignalMapper;
+                connect(edit_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(edit_btn_clicked(QString)));
+
+                connect(edit_btn, SIGNAL(clicked(bool)), edit_btn_signalMapper, SLOT(map()));
+
+                edit_btn_signalMapper->setMapping(edit_btn, id);
+
+
+                //Creating view book screen button
+                QPushButton *book_btn = new QPushButton(widget);
+                book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
+                book_btn->setCursor(Qt::PointingHandCursor);
+
+
+                //Connect book button signal and slot
+                QString book_view_info = id + "," + newBook.getCoverImgRef();
+
+                QSignalMapper *book_btn_signalMapper = new QSignalMapper;
+                connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(book_btn_clicked(QString)));
+
+                connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
+
+                book_btn_signalMapper->setMapping(book_btn, book_view_info);
+
+
+                book_btn->setFlat(true);
+
+                ui->scrollArea->verticalScrollBarPolicy();
+
+                label_title->layoutDirection();
+
+                widget->setMinimumHeight(defY);
+
+                ui->scrollArea->setWidget(widget);
+                ui->scrollArea->verticalScrollBar();
+                ui->scrollArea->ensureWidgetVisible(widget);
 
 
             }
+
+
+
         }
 
-        firstLine = false;
-
-        }
-
-            file.close();
     }
+
+        file.close();
+}
 
 admin_catalogue_screen::~admin_catalogue_screen()
 {

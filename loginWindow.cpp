@@ -3,6 +3,7 @@
 #include "classes.h"
 #include "admin_home_screen.h"
 #include "edit_member_screen.h"
+#include "edit_book_screen.h"
 #include "member_home_screen.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
@@ -206,7 +207,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    admin_catalogue_screen *ptr = new class admin_catalogue_screen;
+    admin_catalogue_screen *ptr = new admin_catalogue_screen;
     ptr->show();
     close();
 }
