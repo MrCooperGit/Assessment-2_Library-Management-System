@@ -26,6 +26,10 @@ add_new_member_screen::add_new_member_screen(QWidget *parent) :
 
     //construct username in top right corner
     ui->label_username->setText(User::userName());
+
+    //construct serial number label with integer
+    //ui->->setText(QString::number(Item::getItemId()));
+
 }
 
 add_new_member_screen::~add_new_member_screen()
