@@ -39,7 +39,7 @@ class Item {
 public:
     static int iD;
 
-    Item();
+    //Item();
     static int getItemId();
 };
 
@@ -47,9 +47,34 @@ public:
 class Book : public Item {
     QString title;
     QString author;
+    QString coverImgRef;
 
 public:
-    Book();
+    //Book();
+
+    void setTitle(QString title){
+        this->title = title;
+    }
+
+    void setAuthor(QString author){
+        this->author = author;
+    }
+
+    void setCoverImgRef(QString coverImgRef){
+        this->coverImgRef = coverImgRef;
+    }
+
+    QString getTitle(){
+        return title;
+    }
+
+    QString getAuthor(){
+        return author;
+    }
+
+    QString getCoverImgRef(){
+        return coverImgRef;
+    }
 };
 
 

@@ -74,8 +74,10 @@ void add_new_book_screen::on_pushButton_modifyCatalogue_clicked()
 //When user submits book details
 void add_new_book_screen::on_pushButton_clicked()
 {
-    QString bookTitle = ui->lineEdit_title->displayText();
-    QString author = ui->lineEdit_author->displayText();
+    Book newBook;
+
+    newBook.setTitle(ui->lineEdit_title->displayText());
+    newBook.setAuthor(ui->lineEdit_author->displayText());
 
     while(!ui->lineEdit_title->displayText().isEmpty() && !ui->lineEdit_author->displayText().isEmpty())
     {
@@ -102,7 +104,7 @@ void add_new_book_screen::on_pushButton_clicked()
         int itemId = Item::getItemId(); //generate itemId
 
         //Input string variables into the file
-        stream << "\n" << itemId << "," << bookTitle << "," << author;
+        stream << itemId << "," << newBook.getTitle() << "," << newBook.getAuthor() << '\n';
 
         file.close();
 

@@ -2,6 +2,7 @@
 #include "ui_edit_member_screen.h"
 #include "classes.h"
 
+
 edit_member_screen::edit_member_screen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::edit_member_screen)
@@ -30,5 +31,12 @@ edit_member_screen::edit_member_screen(QWidget *parent) :
 edit_member_screen::~edit_member_screen()
 {
     delete ui;
+}
+
+
+
+void edit_member_screen::on_pushButton_save_clicked()
+{
+
 }
 

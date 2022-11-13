@@ -4,6 +4,10 @@
 #include "member_catalogue_screen.h"
 #include "classes.h"
 
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+
 member_book_order_screen::member_book_order_screen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::member_book_order_screen)
@@ -21,6 +25,17 @@ member_book_order_screen::member_book_order_screen(QWidget *parent) :
 
     //construct username in top right corner
     ui->label_username->setText(User::userName());
+
+
+    //TEMPORARY -- Set book details -- change to details provided from member catalogue
+    ui->label_bookTitle->setText("The Hobbit");
+    ui->label_author->setText("JRR Tolkien");
+    ui->label_id->setText("10001");
+
+    QPixmap pix2("://img/Hobbit.book.jpg");
+    int w2 = ui->label->width();
+    int h2 = ui->label->height();
+    ui->label->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
 }
 
 member_book_order_screen::~member_book_order_screen()
@@ -46,6 +61,27 @@ void member_book_order_screen::on_pushButton_catalogue_clicked()
 
 void member_book_order_screen::on_pushButton_order_clicked()
 {
+    QFile file("bookOrders.csv");
+
+    if(!file.exists())
+        {
+            qCritical() << "File not found";
+            QMessageBox::warning(this, "File Error", "File not found");
+            return;
+        }
+
+        if(!file.open(QIODevice::WriteOnly))
+        {
+            qCritical() << file.errorString();
+            return;
+        }
+
+        QString userID; // TO DO - Set to the id of the current user
+        QString bookID; // TO DO - Set to the id of the passed book from member catalogue
+
+        QTextStream stream(&file);
+
+        stream << userID << bookID << "\n";
 
 }
 
