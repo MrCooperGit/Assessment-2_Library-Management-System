@@ -2,6 +2,7 @@
 #include "ui_edit_member_screen.h"
 #include "classes.h"
 
+<<<<<<< HEAD
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
@@ -9,6 +10,8 @@
 #include <QDir>
 #include <QSqlQueryModel>
 
+=======
+>>>>>>> 17e29e74e78283417f950fabc36dea87afd5129b
 
 edit_member_screen::edit_member_screen(QWidget *parent) :
     QWidget(parent),
@@ -182,4 +185,5 @@ void edit_member_screen::on_tableView_activated(const QModelIndex &index)
         connClose();
     }
 }
+
 
