@@ -15,6 +15,13 @@ public:
     explicit edit_book_screen(QString id, QWidget *parent = nullptr);
     ~edit_book_screen();
 
+private slots:
+    void on_pushButton_home_clicked();
+
+    void on_pushButton_members_clicked();
+
+    void on_pushButton_submit_clicked();
+
 private:
     Ui::edit_book_screen *ui;
 };
