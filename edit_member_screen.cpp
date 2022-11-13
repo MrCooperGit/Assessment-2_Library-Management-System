@@ -32,8 +32,3 @@ edit_member_screen::~edit_member_screen()
     delete ui;
 }
 
-void edit_member_screen::on_pushButton_submit_clicked()
-{
-
-}
-
