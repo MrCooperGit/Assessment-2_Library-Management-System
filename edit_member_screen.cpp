@@ -186,7 +186,6 @@ void edit_member_screen::on_tableView_activated(const QModelIndex &index)
 }
 
 
-
 void edit_member_screen::on_pushButton_home_clicked()
 {
     admin_home_screen *ptr = new class admin_home_screen;
