@@ -24,7 +24,7 @@ member_book_order_screen::member_book_order_screen(QWidget *parent) :
     ui->label_title->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
 
     //TEMPORARY -- Set book details -- change to details provided from member catalogue

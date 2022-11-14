@@ -33,7 +33,7 @@ member_home_screen::member_home_screen(QWidget *parent) :
     ui->label_img_2->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 }
 
 member_home_screen::~member_home_screen()

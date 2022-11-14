@@ -33,7 +33,7 @@ member_list_screen::member_list_screen(QWidget *parent) :
     ui->label_title->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     //create/link file including validation checks
     QDir current;

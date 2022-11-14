@@ -55,7 +55,6 @@ set(PROJECT_SOURCES
         resource.qrc
         classes.h classes.cpp
         temp.ui
-        edit_member_screen.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

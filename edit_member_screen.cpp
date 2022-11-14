@@ -33,7 +33,7 @@ edit_member_screen::edit_member_screen(QWidget *parent) :
     ui->label_heading->setPixmap(pix2.scaled(w2,h2, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     //Connect to/Create database and set Table if required
     createDb("/users.db");

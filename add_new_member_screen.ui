@@ -200,7 +200,7 @@ color: #3366CC;
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -325,6 +325,9 @@ color: #3366CC;
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
         </property>
        </widget>
       </item>
