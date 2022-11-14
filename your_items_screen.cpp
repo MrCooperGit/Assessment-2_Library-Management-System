@@ -6,6 +6,13 @@
 #include "QDate"
 #include "classes.h"
 
+#include <QDir>
+#include <QMessageBox>
+#include <QSignalMapper>
+#include <QPalette>
+#include <QBrush>
+#include <QScrollArea>
+
 your_items_screen::your_items_screen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::your_items_screen)
@@ -33,6 +40,48 @@ your_items_screen::your_items_screen(QWidget *parent) :
 
     //construct username in top right corner
     ui->label_username->setText(User::userName);
+
+    //create/link file including validation checks
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("users.csv")); //file is now specific to the user's directory
+    if(!file.exists())
+    {
+        qCritical() << "File not found";
+        QMessageBox::warning(this, "File Error", "File not found");
+        return;
+    }
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qCritical() << file.errorString();
+        return;
+    }
+
+    while (!file.atEnd()){
+
+        QString line = file.readLine();
+        QString firstName;
+        QString lastName;
+        QString email;
+        QString id;
+
+        firstName.clear();  lastName.clear(); email.clear();  id.clear();  //Clearing strings from previous line of file
+
+        //Making a string list to seperate each column of the file
+        QStringList fileList;
+        fileList.clear();
+        fileList = line.split(",");
+
+        //Transfer data from file into variables
+        firstName = fileList[2];
+        lastName = lastName[3];
+        email = email[0];
+        id = id[1];
+
+        QLabel *ptr = new QLabel;
+        ptr->setText(firstName);
+    }
 }
 
 your_items_screen::~your_items_screen()
