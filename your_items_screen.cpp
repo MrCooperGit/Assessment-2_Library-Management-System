@@ -32,7 +32,7 @@ your_items_screen::your_items_screen(QWidget *parent) :
     timer->start(1000); //time in ms
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 }
 
 your_items_screen::~your_items_screen()

@@ -25,7 +25,7 @@ edit_book_screen::edit_book_screen(QString id, QWidget *parent) :
     this->setWindowTitle("Edit Book");
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     //Setting logo images
     QPixmap pix(":/img/library.label.png");

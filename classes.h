@@ -9,12 +9,32 @@ class User {
     QString password;
 
 public:
-    static QString firstName, lastName;
+    QString firstName, lastName;
+    static QString userName;
     static int iD;
 
     static int getUserId();
-    static QString userName();
-    static void setName(QString fName, QString lastName);
+
+    void setName(QString fName, QString lName){
+        this->firstName = fName;
+        this->lastName = lName;
+    }
+    void setPassword(QString password){
+        this->password = password;
+    }
+
+    QString getFirstName(){
+        return firstName;
+    }
+    QString getLastName(){
+        return lastName;
+    }
+    QString getPassword(){
+        return password;
+    }
+    static void setUserName(QString fName, QString lName){
+        User::userName = fName + lName;
+    }
 };
 
 
@@ -23,6 +43,14 @@ class Member : public User {
 
 public:
     Member();
+
+    void setEmail(QString email){
+        this->emailAddress = email;
+    }
+
+    QString getEmail(){
+        return emailAddress;
+    }
 };
 
 
