@@ -27,11 +27,6 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QScrollArea *scrollArea = new QScrollArea;
-    scrollArea->setWidget(this);
-    scrollArea->setGeometry(0, 0, this->width(), this->height());
-
-
     //Basic window style
     this->setWindowTitle("Admin Catalogue");
     this->setStyleSheet("background-color: white;");
@@ -71,9 +66,6 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
     int book_btn_X, book_btn_Y;
 
-    //Bool to skip first line of file which is blank
-    bool firstLine = true;
-
     QWidget *widget = new QWidget(ui->scrollArea);
 
     while (!file.atEnd()){
@@ -83,11 +75,6 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
         Book newBook;
 
-
-
-            QString searchText = ui->lineEdit_search->displayText();
-
-            newBook.getTitle().clear();  newBook.getAuthor().clear();  id.clear();  //Clearing strings from previous line of file
 
             //Making a string list to seperate each column of the file
             QStringList fileList;
@@ -216,8 +203,6 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
             }
 
-    firstLine = false;
-
     }
 
 
@@ -252,8 +237,6 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
         QString id;
 
         Book newBook;
-
-        newBook.getTitle().clear();  newBook.getAuthor().clear();  id.clear();  //Clearing strings from previous line of file
 
         //Making a string list to seperate each column of the file
         QStringList fileList;
