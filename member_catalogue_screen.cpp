@@ -1,6 +1,7 @@
 #include "member_catalogue_screen.h"
 #include "ui_member_catalogue_screen.h"
 #include "member_home_screen.h"
+#include "member_book_order_screen.h"
 #include "classes.h"
 
 #include <QFile>
@@ -354,6 +355,41 @@ void member_catalogue_screen::on_pushButton_home_clicked()
 
 void member_catalogue_screen::member_btn_clicked(QString memberInfo){
 
+    member_book_order_screen *ptr = new member_book_order_screen(memberInfo);
+    ptr->show();
+    close();
 
+}
+
+
+void member_catalogue_screen::on_pushButton_search_clicked()
+{
+    _searchText = ui->lineEdit_search->displayText();
+
+    if (_searchText.isEmpty()){
+        _searched = false;
+    } else if (!_searchText.isEmpty()){
+        _searched = true;
+    }
+
+
+        member_catalogue_screen *ptr = new member_catalogue_screen;
+        if (_numofItems == 0 && _searched){
+
+            QMessageBox::information(this, "Title", "Book not found");
+
+            _searched = false;
+
+
+            member_catalogue_screen *ptr = new member_catalogue_screen;
+            ptr->show();
+            this->close();
+
+
+        } else {
+
+            ptr->show();
+            close();
+        }
 }
 
