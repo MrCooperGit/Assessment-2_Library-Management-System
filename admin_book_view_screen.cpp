@@ -27,7 +27,7 @@ admin_book_view_screen::admin_book_view_screen(QString bookInfo, QWidget *parent
     ui->label_title->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     QFile file("Books.csv");
 
