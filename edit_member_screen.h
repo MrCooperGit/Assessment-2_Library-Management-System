@@ -56,6 +56,10 @@ private slots:
 
     void on_tableView_activated(const QModelIndex &index);
 
+    void on_pushButton_home_clicked();
+
+    void on_pushButton_members_clicked();
+
 private:
     Ui::edit_member_screen *ui;
 };

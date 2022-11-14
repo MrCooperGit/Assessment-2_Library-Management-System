@@ -49,7 +49,7 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
     ui->pushButton_4->setIcon(QIcon(":/img/menu.label4.png"));
     ui->pushButton_4->setIconSize(QSize(190,130));
 
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 }
 
 admin_home_screen::~admin_home_screen()

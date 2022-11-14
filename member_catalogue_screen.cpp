@@ -36,7 +36,7 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
     ui->label_title->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     _numofItems = 0;
 

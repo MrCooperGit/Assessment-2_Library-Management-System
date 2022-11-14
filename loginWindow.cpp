@@ -113,8 +113,8 @@ void LoginWindow::on_pushButton_login_clicked()
         if(validateEmail==0 && validatePass==0){
 
             //store first and last name in object of User class for use in other screens
-            User::setName(firstName, lastName);
-            qInfo() << User::userName();
+            User::setUserName(firstName, lastName);
+            qInfo() << User::userName;
             file.close();
             if(line.contains("admin")){
                 admin_home_screen *admin_home_screen = new class admin_home_screen;
@@ -207,7 +207,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    member_catalogue_screen *ptr = new member_catalogue_screen;
+    add_new_member_screen *ptr = new add_new_member_screen;
     ptr->show();
     close();
 }

@@ -32,7 +32,7 @@ member_book_order_screen::member_book_order_screen(QString memberInfo, QWidget *
     ui->label_title->setPixmap(pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     QDir current;
     QString currentPath = current.currentPath(); //create string of current directory

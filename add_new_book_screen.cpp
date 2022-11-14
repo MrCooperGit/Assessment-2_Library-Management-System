@@ -38,7 +38,7 @@ add_new_book_screen::add_new_book_screen(QWidget *parent) :
     timer->start(1000); //time in ms
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 
     //construct serial number label with integer
     ui->label_snDisplay->setText(QString::number(Item::getItemId()));
