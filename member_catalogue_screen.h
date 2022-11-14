@@ -20,6 +20,8 @@ private slots:
 
     void member_btn_clicked(QString);
 
+    void on_pushButton_search_clicked();
+
 private:
     Ui::member_catalogue_screen *ui;
 };
