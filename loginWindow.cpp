@@ -84,7 +84,7 @@ void LoginWindow::on_pushButton_login_clicked()
     }
 
     //QTextStream stream(&file);
-    QString email, password, firstName, lastName;
+    QString email, password, firstName, lastName, userId;
     while (!file.atEnd()){
         QString line = file.readLine(); //place line into string
 
@@ -93,11 +93,13 @@ void LoginWindow::on_pushButton_login_clicked()
         password.clear();
         firstName.clear();
         lastName.clear();
+        userId.clear();
 
 
         QStringList list = line.split(","); //split string into string array using "," as break
         //assign variables by index of the string array
         email = list[0];
+        userId = list[1];
         password = list[5];
         firstName.replace(0,12, list[2]);
         lastName.replace(0,12, list[3]);
@@ -114,6 +116,7 @@ void LoginWindow::on_pushButton_login_clicked()
 
             //store first and last name in object of User class for use in other screens
             User::setUserName(firstName, lastName);
+            User::iD = userId.toInt(); //set global userId for use in your_items_screen
             qInfo() << User::userName;
             file.close();
             if(line.contains("admin")){
@@ -207,7 +210,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_member_screen *ptr = new add_new_member_screen;
+    your_items_screen *ptr = new your_items_screen;
     ptr->show();
     close();
 }

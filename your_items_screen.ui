@@ -84,7 +84,7 @@ background-color: rgb(255, 255, 255);
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_members">
+  <widget class="QPushButton" name="pushButton_catalogue">
    <property name="geometry">
     <rect>
      <x>105</x>
@@ -190,6 +190,9 @@ border-radius: 3px;</string>
       </item>
       <item>
        <widget class="QScrollArea" name="scrollArea_currentlyLoaned">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -247,6 +250,9 @@ border-radius: 3px;</string>
       </item>
       <item>
        <widget class="QScrollArea" name="scrollArea_dueSoon">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -304,6 +310,9 @@ border-radius: 3px;</string>
       </item>
       <item>
        <widget class="QScrollArea" name="scrollArea_loanRequests">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -361,6 +370,9 @@ border-radius: 3px;</string>
       </item>
       <item>
        <widget class="QScrollArea" name="scrollArea_overdue">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
+        </property>
         <property name="widgetResizable">
          <bool>true</bool>
         </property>

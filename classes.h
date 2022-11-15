@@ -33,7 +33,7 @@ public:
         return password;
     }
     static void setUserName(QString fName, QString lName){
-        User::userName = fName + lName;
+        User::userName = fName + " " + lName;
     }
 };
 
