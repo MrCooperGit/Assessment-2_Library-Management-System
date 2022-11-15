@@ -15,45 +15,21 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Sql Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        loginWindow.cpp
-        loginWindow.h
-        loginWindow.ui
-        admin_home_screen.h
-        admin_home_screen.cpp
-        admin_home_screen.ui
-        admin_catalogue_screen.h
-        admin_catalogue_screen.cpp
-        admin_catalogue_screen.ui
-        member_home_screen.h
-        member_home_screen.cpp
-        member_home_screen.ui
-        add_new_book_screen.h
-        add_new_book_screen.cpp
-        add_new_book_screen.ui
-        add_new_member_screen.h
-        add_new_member_screen.cpp
-        add_new_member_screen.ui
-        your_items_screen.h
-        your_items_screen.cpp
-        your_items_screen.ui
-        member_list_screen.h
-        member_list_screen.cpp
-        member_list_screen.ui
-        edit_book_screen.h
-        edit_book_screen.cpp
-        edit_book_screen.ui
-        member_catalogue_screen.h
-        member_catalogue_screen.cpp
-        member_catalogue_screen.ui
-        edit_member_screen.h
-        edit_member_screen.cpp edit_member_screen.ui
-        admin_book_view_screen.h
-        admin_book_view_screen.cpp
-        admin_book_view_screen.ui
-        member_book_order_screen.h member_book_order_screen.cpp member_book_order_screen.ui
+                                     main.cpp
+        loginWindow.h                loginWindow.cpp               loginWindow.ui
+        admin_home_screen.h          admin_home_screen.cpp         admin_home_screen.ui
+        admin_catalogue_screen.h     admin_catalogue_screen.cpp    admin_catalogue_screen.ui
+        member_home_screen.h         member_home_screen.cpp        member_home_screen.ui
+        add_new_book_screen.h        add_new_book_screen.cpp       add_new_book_screen.ui
+        add_new_member_screen.h      add_new_member_screen.cpp     add_new_member_screen.ui
+        your_items_screen.h          your_items_screen.cpp         your_items_screen.ui
+        edit_book_screen.h           edit_book_screen.cpp          edit_book_screen.ui
+        member_catalogue_screen.h    member_catalogue_screen.cpp   member_catalogue_screen.ui
+        edit_member_screen.h         edit_member_screen.cpp        edit_member_screen.ui
+        admin_book_view_screen.h     admin_book_view_screen.cpp    admin_book_view_screen.ui
+        member_book_order_screen.h   member_book_order_screen.cpp  member_book_order_screen.ui
+        classes.h                    classes.cpp
         resource.qrc
-        classes.h classes.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

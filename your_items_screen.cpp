@@ -2,17 +2,13 @@
 #include "ui_your_items_screen.h"
 #include "member_catalogue_screen.h"
 #include "member_home_screen.h"
-#include "loginWindow.h"
+#include "loginWindow.h" //required to access timer object
 #include "QDate"
 #include "classes.h"
 
 #include <QDir>
 #include <QMessageBox>
-#include <QSignalMapper>
-#include <QPalette>
-#include <QBrush>
 #include <QScrollArea>
-#include <QSharedPointer>
 
 your_items_screen::your_items_screen(QWidget *parent) :
     QWidget(parent),
@@ -39,49 +35,8 @@ your_items_screen::your_items_screen(QWidget *parent) :
     connect(timer, SIGNAL(timeout()), this, SLOT(currentDate()));
     timer->start(1000); //time in ms
 
-    // [0] construct username in top right corner and populate userId from userName
+    // [0] construct username in top right corner
     ui->label_username->setText(User::userName);
-//    QDir current;
-//    QString currentPath = current.currentPath(); //create string of current directory
-//    QDir dir(currentPath); //QDir variable becomes current directory
-//    QFile fileU(dir.filePath("users.csv")); //file is now specific to the user's directory
-
-//    if(!fileU.exists())
-//    {
-//        qCritical() << "File not found";
-//    }
-
-//    if(!fileU.open(QIODevice::ReadOnly))
-//    {
-//        qCritical() << fileU.errorString();
-//    }
-
-//    QString userId;
-//    while (!fileU.atEnd()){
-//        QString line = fileU.readLine(); //place line into string
-//        qInfo() << line;
-//        //empty the variables before each loop
-//        userId.clear();
-
-//        QString fName, lName; //temp variables to store names
-
-//        //Making a string list to seperate each column of the file
-//        QStringList fileList;
-//        fileList.clear();
-//        fileList = line.split(",");
-//        fName = fileList[2];
-//        lName = fileList[3];
-
-//        //return the userId of the user logged in
-//        if(line.contains(fName) && line.contains(lName)){
-//            QStringList list = line.split(","); //split string into string array using "," as break
-//            //assign variables by index of the string array
-//            userId = list[1];
-//            qInfo() << userId;
-//            break;
-//        }
-//    }
-    //[0]
 
     //create/link file including validation checks
     QDir current;

@@ -41,7 +41,9 @@ add_new_book_screen::add_new_book_screen(QWidget *parent) :
     ui->label_username->setText(User::userName);
 
     //construct serial number label with integer
+    Item::iD = 0;
     ui->label_snDisplay->setText(QString::number(Item::getItemId()));
+    Item::iD = 0;
 }
 
 add_new_book_screen::~add_new_book_screen()

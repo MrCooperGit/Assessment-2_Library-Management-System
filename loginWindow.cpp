@@ -87,7 +87,7 @@ void LoginWindow::on_pushButton_login_clicked()
     QString email, password, firstName, lastName, userId;
     while (!file.atEnd()){
         QString line = file.readLine(); //place line into string
-
+    qInfo() << line;
         //empty the variables before each loop
         email.clear();
         password.clear();
@@ -101,8 +101,8 @@ void LoginWindow::on_pushButton_login_clicked()
         email = list[0];
         userId = list[1];
         password = list[5];
-        firstName.replace(0,12, list[2]);
-        lastName.replace(0,12, list[3]);
+        firstName = list[2];
+        lastName = list[3];
 
         if (password.contains("\r\n")) password.chop(2);   //removes '\r\n' from password
 

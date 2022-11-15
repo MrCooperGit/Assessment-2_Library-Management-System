@@ -1,7 +1,7 @@
 #include "admin_catalogue_screen.h"
 #include "ui_admin_catalogue_screen.h"
 #include "admin_home_screen.h"
-#include "member_list_screen.h"
+#include "edit_member_screen.h"
 #include "add_new_book_screen.h"
 #include "edit_book_screen.h"
 #include "admin_book_view_screen.h"
@@ -101,6 +101,30 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
                 } else if (newBook.getTitle().contains("To Kill A Mockingbird")){
 
                     newBook.setCoverImgRef("://img/Mockingbird.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+
+                } else if (newBook.getTitle().contains("The Fellowship of the Ring")){
+
+                    newBook.setCoverImgRef(":/img/FofRing.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+
+                } else if (newBook.getTitle().contains("It Felt Like a Kiss")){
+
+                    newBook.setCoverImgRef(":/img/itFeltLikeAKiss.book.jpg");
+                    QLabel *label_title_img = new QLabel(widget);
+                    label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
+                    QPixmap title_img(newBook.getCoverImgRef());
+                    label_title_img->setPixmap(title_img.scaled(img_W, img_H));
+
+                } else if (newBook.getTitle().contains("Starsight")){
+
+                    newBook.setCoverImgRef(":/img/starsight.book.jpg");
                     QLabel *label_title_img = new QLabel(widget);
                     label_title_img->setGeometry((defX + img_offset_X), (defY + offset_Y), img_W, img_H);
                     QPixmap title_img(newBook.getCoverImgRef());
@@ -405,7 +429,7 @@ void admin_catalogue_screen::book_btn_clicked(QString bookInfo){
 
 void admin_catalogue_screen::on_pushButton_modifyMembers_clicked()
 {
-    member_list_screen *ptr = new class member_list_screen;
+    edit_member_screen *ptr = new class edit_member_screen;
     ptr->show();
     close();
 }
