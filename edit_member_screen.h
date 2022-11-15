@@ -60,6 +60,8 @@ private slots:
 
     void on_pushButton_catalogue_clicked();
 
+    void on_pushButton_catalogue_3_clicked();
+
 private:
     Ui::edit_member_screen *ui;
 };

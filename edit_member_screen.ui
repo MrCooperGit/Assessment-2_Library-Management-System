@@ -465,6 +465,68 @@ background-color: rgb(255, 255, 255);
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_catalogue_2">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>10</y>
+     <width>100</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Italic Outline Art</family>
+     <pointsize>12</pointsize>
+     <bold>false</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: 0;
+border-radius: 15px;
+border-color: 0;
+color: #3366CC;
+</string>
+   </property>
+   <property name="text">
+    <string>Catalogue</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_catalogue_3">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>100</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Italic Outline Art</family>
+     <pointsize>12</pointsize>
+     <bold>false</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: 0;
+border-radius: 15px;
+border-color: 0;
+color: #3366CC;
+</string>
+   </property>
+   <property name="text">
+    <string>Add Member</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -103,7 +103,7 @@ void LoginWindow::on_pushButton_login_clicked()
         firstName = list[2];
         lastName = list[3];
 
-        if (password.contains("\r\n")) password.chop(2);   //removes '\r\n' from password
+        if (password.contains("\n")) password.chop(1);   //removes '\r\n' from password
 
         //using integers to validate login details
         //the compare() function returns 0 if strings are the same
@@ -188,7 +188,7 @@ void LoginWindow::on_pushButton_register_clicked()
     int userId = User::getUserId(); //generate userId
 
     //stream pastes the variables into the .csv file with /n for new line and ',' for next cell
-    stream << "\n" << email << "," << userId << "," << firstName << "," << lastName << "," << userType << "," << password;
+    stream << email << "," << userId << "," << firstName << "," << lastName << "," << userType << "," << password << "\n";
     file.close();
 
     ui->lineEdit_username->setText(ui->lineEdit_email->text());
@@ -209,7 +209,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    admin_catalogue_screen *ptr = new admin_catalogue_screen;
+    member_catalogue_screen *ptr = new member_catalogue_screen;
     ptr->show();
     close();
 }
