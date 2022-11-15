@@ -163,7 +163,7 @@
     <string>[+]Status</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_members">
+  <widget class="QPushButton" name="pushButton_catalogue">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -191,7 +191,7 @@ color: #3366CC;
 </string>
    </property>
    <property name="text">
-    <string>Members</string>
+    <string>Catalogue</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
