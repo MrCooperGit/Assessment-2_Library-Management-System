@@ -16,6 +16,7 @@ public:
     LoginWindow(QWidget *parent = nullptr);
     ~LoginWindow();
 
+
 public slots:
     void currentDate();
 
@@ -29,5 +30,6 @@ private slots:
 private:
     Ui::LoginWindow *ui;
     QTimer *timer; //object to start timer to find date with currentDate()
+
 };
 #endif // LOGINWINDOW_H

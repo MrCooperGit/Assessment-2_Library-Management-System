@@ -34,6 +34,7 @@ add_new_member_screen::add_new_member_screen(QWidget *parent) :
     ui->label_username->setText(User::userName);
 
     //construct serial number label with integer
+    User::iD = 0;
     ui->label_idNumber->setText(QString::number(User::getUserId()));
     User::iD = 0;
 
