@@ -22,6 +22,8 @@ private slots:
 
     void on_pushButton_search_clicked();
 
+    void on_pushButton_yourItems_clicked();
+
 private:
     Ui::member_catalogue_screen *ui;
 };

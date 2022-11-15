@@ -3,6 +3,7 @@
 #include "member_home_screen.h"
 #include "member_book_order_screen.h"
 #include "classes.h"
+#include "your_items_screen.h"
 
 #include <QFile>
 #include <QMessageBox>
@@ -11,6 +12,7 @@
 #include <QPalette>
 #include <QBrush>
 #include <QSignalMapper>
+#include <QDir>
 
 bool _searched = false;
 bool _emptySearch = false;
@@ -40,7 +42,10 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
 
     _numofItems = 0;
 
-    QFile file("books.csv");
+    QDir current;
+    QString currentPath = current.currentPath(); //create string of current directory
+    QDir dir(currentPath); //QDir variable becomes current directory
+    QFile file(dir.filePath("books.csv")); //file is now specific to the user's directory
 
     if(!file.exists())
     {
@@ -290,7 +295,7 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
                 defH = label_author->height();
 
                 QLabel *label_id = new QLabel(widget);
-                label_id->setText(id);
+                label_id->setText("Book ID: " + id);
                 label_id->setGeometry(defX, (defY + offset_Y), defW, defH);
 
                 defX = label_id->x();
@@ -327,16 +332,9 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
                 ui->scrollArea->setWidget(widget);
                 ui->scrollArea->verticalScrollBar();
                 ui->scrollArea->ensureWidgetVisible(widget);
-
-
             }
-
-
-
         }
-
     }
-
         file.close();
 }
 
@@ -391,5 +389,13 @@ void member_catalogue_screen::on_pushButton_search_clicked()
             ptr->show();
             close();
         }
+}
+
+
+void member_catalogue_screen::on_pushButton_yourItems_clicked()
+{
+    your_items_screen *ptr = new class your_items_screen;
+    ptr->show();
+    close();
 }
 
