@@ -118,6 +118,8 @@ void admin_home_screen::on_pushButton_4_clicked()
 
 void admin_home_screen::on_pushButton_modifyMember_clicked()
 {
-
+    edit_member_screen *ptr = new class edit_member_screen;
+    ptr->show();
+    close();
 }
 

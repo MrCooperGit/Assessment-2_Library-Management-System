@@ -2,9 +2,13 @@
 #define YOUR_ITEMS_SCREEN_H
 
 #include <QWidget>
+#include <QDir>
+#include <QMessageBox>
 
 namespace Ui {
 class your_items_screen;
+
+    QString getUserId();
 }
 
 class your_items_screen : public QWidget

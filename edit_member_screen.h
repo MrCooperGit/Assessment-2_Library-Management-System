@@ -58,7 +58,7 @@ private slots:
 
     void on_pushButton_home_clicked();
 
-    void on_pushButton_members_clicked();
+    void on_pushButton_catalogue_clicked();
 
 private:
     Ui::edit_member_screen *ui;

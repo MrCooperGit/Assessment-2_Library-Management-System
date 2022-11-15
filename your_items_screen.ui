@@ -84,7 +84,7 @@ background-color: rgb(255, 255, 255);
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_members">
+  <widget class="QPushButton" name="pushButton_catalogue">
    <property name="geometry">
     <rect>
      <x>105</x>
@@ -189,19 +189,23 @@ border-radius: 3px;</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_5">
-        <property name="minimumSize">
-         <size>
-          <width>150</width>
-          <height>40</height>
-         </size>
+       <widget class="QScrollArea" name="scrollArea_currentlyLoaned">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <property name="widgetResizable">
+         <bool>true</bool>
         </property>
-        <property name="text">
-         <string/>
-        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>148</width>
+           <height>277</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -245,19 +249,23 @@ border-radius: 3px;</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_6">
-        <property name="minimumSize">
-         <size>
-          <width>150</width>
-          <height>40</height>
-         </size>
+       <widget class="QScrollArea" name="scrollArea_dueSoon">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <property name="widgetResizable">
+         <bool>true</bool>
         </property>
-        <property name="text">
-         <string/>
-        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>148</width>
+           <height>277</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -301,19 +309,23 @@ border-radius: 3px;</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_7">
-        <property name="minimumSize">
-         <size>
-          <width>150</width>
-          <height>40</height>
-         </size>
+       <widget class="QScrollArea" name="scrollArea_loanRequests">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <property name="widgetResizable">
+         <bool>true</bool>
         </property>
-        <property name="text">
-         <string/>
-        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>148</width>
+           <height>277</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -357,19 +369,23 @@ border-radius: 3px;</string>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_8">
-        <property name="minimumSize">
-         <size>
-          <width>150</width>
-          <height>40</height>
-         </size>
+       <widget class="QScrollArea" name="scrollArea_overdue">
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAsNeeded</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        <property name="widgetResizable">
+         <bool>true</bool>
         </property>
-        <property name="text">
-         <string/>
-        </property>
+        <widget class="QWidget" name="scrollAreaWidgetContents_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>148</width>
+           <height>277</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>
