@@ -3,7 +3,7 @@
 #include "add_new_book_screen.h"
 #include "admin_catalogue_screen.h"
 #include "add_new_member_screen.h"
-#include "member_list_screen.h"
+#include "edit_member_screen.h"
 #include "classes.h"
 
 #include <QPixmap>
@@ -110,7 +110,7 @@ void admin_home_screen::on_pushButton_addNewMember_clicked()
 
 void admin_home_screen::on_pushButton_4_clicked()
 {
-    member_list_screen *ptr = new class member_list_screen;
+    edit_member_screen *ptr = new edit_member_screen;
     ptr->show();
     close();
 }
@@ -118,8 +118,6 @@ void admin_home_screen::on_pushButton_4_clicked()
 
 void admin_home_screen::on_pushButton_modifyMember_clicked()
 {
-    member_list_screen *ptr = new class member_list_screen;
-    ptr->show();
-    close();
+
 }
 

@@ -37,9 +37,6 @@ set(PROJECT_SOURCES
         your_items_screen.h
         your_items_screen.cpp
         your_items_screen.ui
-        member_list_screen.h
-        member_list_screen.cpp
-        member_list_screen.ui
         edit_book_screen.h
         edit_book_screen.cpp
         edit_book_screen.ui

@@ -1,7 +1,7 @@
 #include "add_new_member_screen.h"
 #include "ui_add_new_member_screen.h"
 #include "admin_home_screen.h"
-#include "member_list_screen.h"
+#include "edit_member_screen.h"
 #include "classes.h"
 
 #include <QFile>
@@ -54,7 +54,7 @@ void add_new_member_screen::on_pushButton_home_clicked()
 
 void add_new_member_screen::on_pushButton_members_clicked()
 {
-    member_list_screen *ptr = new class member_list_screen;
+    edit_member_screen *ptr = new edit_member_screen;
     ptr->show();
     close();
 }

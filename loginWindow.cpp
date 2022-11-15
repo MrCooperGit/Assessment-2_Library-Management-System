@@ -8,7 +8,6 @@
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
 #include "member_catalogue_screen.h"
-#include "member_list_screen.h"
 #include "add_new_book_screen.h"
 #include "add_new_member_screen.h"
 #include "admin_book_view_screen.h"
@@ -207,7 +206,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    add_new_member_screen *ptr = new add_new_member_screen;
+    admin_catalogue_screen *ptr = new admin_catalogue_screen;
     ptr->show();
     close();
 }

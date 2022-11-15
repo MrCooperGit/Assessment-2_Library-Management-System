@@ -9,16 +9,23 @@ class User {
     QString password;
 
 public:
+
     QString firstName, lastName;
     static QString userName;
     static int iD;
 
+
+
     static int getUserId();
 
-    void setName(QString fName, QString lName){
+    void setFirstName(QString fName){
         this->firstName = fName;
+    }
+
+    void setLastName(QString lName){
         this->lastName = lName;
     }
+
     void setPassword(QString password){
         this->password = password;
     }
@@ -42,7 +49,7 @@ class Member : public User {
     QString emailAddress;
 
 public:
-    Member();
+    //Member();
 
     void setEmail(QString email){
         this->emailAddress = email;

@@ -61,7 +61,7 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
 
     int img_W = 50, img_H = 80;
 
-    int member_btn_X, member_btn_Y;
+    int book_btn_X, book_btn_Y;
 
     QWidget *widget = new QWidget(ui->scrollArea);
 
@@ -124,8 +124,8 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
                 label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
 
 
-                member_btn_X = defX;
-                member_btn_Y = defY;
+                book_btn_X = defX;
+                book_btn_Y = defY;
 
                 defX = label_title->x();
                 defY = label_title->y();
@@ -156,20 +156,20 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
 
 
                 //Creating view book screen button
-                QPushButton *member_btn = new QPushButton(widget);
-                member_btn->setGeometry((member_btn_X + img_offset_X), (member_btn_Y + offset_Y), defW, 85);
+                QPushButton *book_btn = new QPushButton(widget);
+                book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
 
-                member_btn->setFlat(true);
+                book_btn->setFlat(true);
 
                 //Connect book button signal and slot
-                QString member_view_info = id + "," + newBook.getCoverImgRef();
+                QString book_view_info = id + "," + newBook.getCoverImgRef();
 
                 QSignalMapper *book_btn_signalMapper = new QSignalMapper;
                 connect(book_btn_signalMapper, SIGNAL(mappedString(QString)), this, SLOT(member_btn_clicked(QString)));
 
-                connect(member_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
+                connect(book_btn, SIGNAL(clicked(bool)), book_btn_signalMapper, SLOT(map()));
 
-                book_btn_signalMapper->setMapping(member_btn, member_view_info);
+                book_btn_signalMapper->setMapping(book_btn, book_view_info);
 
 
                 ui->scrollArea->verticalScrollBarPolicy();
@@ -272,8 +272,8 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
                 label_title->setText(newBook.getTitle());
                 label_title->setGeometry(defX, (defY + offset_Y), defW, defH);
 
-                member_btn_X = defX;
-                member_btn_Y = defY;
+                book_btn_X = defX;
+                book_btn_Y = defY;
 
                 defX = label_title->x();
                 defY = label_title->y();
@@ -301,7 +301,7 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
 
                 //Creating view book screen button
                 QPushButton *member_btn = new QPushButton(widget);
-                member_btn->setGeometry((member_btn_X + img_offset_X), (member_btn_Y + offset_Y), defW, 85);
+                member_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
                 member_btn->setCursor(Qt::PointingHandCursor);
 
 

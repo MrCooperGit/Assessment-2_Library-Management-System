@@ -45,7 +45,6 @@ edit_book_screen::edit_book_screen(QString id, QWidget *parent) :
     QDir dir(currentPath); //QDir variable becomes current directory
     QFile file(dir.filePath("books.csv")); //file is now specific to the user's directory
 
-    //Check if book has already been ordered
 
     if(!file.exists())  //If file does not exist, will create file in current directory
     {
@@ -85,8 +84,6 @@ edit_book_screen::edit_book_screen(QString id, QWidget *parent) :
 
     }
 
-    file.close();
-
 
     ui->lineEdit_cTitle->setText(targetBook.getTitle());
     ui->lineEdit_cAuthor->setText(targetBook.getAuthor());
@@ -117,9 +114,6 @@ void edit_book_screen::on_pushButton_members_clicked()
 
 
 
-
-
-
 void edit_book_screen::on_pushButton_submit_clicked()
 {
     newTitle = ui->lineEdit_newTitle->displayText();
@@ -133,9 +127,7 @@ void edit_book_screen::on_pushButton_submit_clicked()
         QDir current;
         QString currentPath = current.currentPath(); //create string of current directory
         QDir dir(currentPath); //QDir variable becomes current directory
-        QFile file(dir.filePath("orders.csv")); //file is now specific to the user's directory
-
-        //Check if book has already been ordered
+        QFile file(dir.filePath("books.csv")); //file is now specific to the user's directory
 
         if(!file.exists())  //If file does not exist, will create file in current directory
         {
@@ -153,22 +145,21 @@ void edit_book_screen::on_pushButton_submit_clicked()
 
         //Open temp file
         QDir current2;
-        QString currentPath2 = current.currentPath(); //create string of current directory
-        QDir dir2(currentPath); //QDir variable becomes current directory
-        QFile tempFile(dir.filePath("tempBooks.csv")); //file is now specific to the user's directory
+        QString currentPath2 = current2.currentPath(); //create string of current directory
+        QDir dir2(currentPath2); //QDir variable becomes current directory
+        QFile tempFile(dir2.filePath("tempBooks.csv")); //file is now specific to the user's directory
 
-        //Check if book has already been ordered
 
-        if(!file.exists())  //If file does not exist, will create file in current directory
+        if(!tempFile.exists())  //If file does not exist, will create file in current directory
         {
-            if (!file.open(QIODevice::ReadWrite))
+            if (!tempFile.open(QIODevice::ReadWrite))
                 qWarning("Cannot create the file");
-            file.close();
+            tempFile.close();
         }
 
-        if(!file.open(QIODevice::Append))  //If file is not opened give error
+        if(!tempFile.open(QIODevice::WriteOnly))  //If file is not opened give error
         {
-            qCritical() << file.errorString();
+            qCritical() << tempFile.errorString();
             return;
         }
 
@@ -192,7 +183,6 @@ void edit_book_screen::on_pushButton_submit_clicked()
             if (fileID == targetID){
                 tempStream << targetID << "," << newTitle << "," << newAuthor << "\n";
 
-                QMessageBox::information(this, "Title", "Target book found");
             }
             else {
 
@@ -207,14 +197,14 @@ void edit_book_screen::on_pushButton_submit_clicked()
 
         //Overwrite main file with temp file
 
-        if(!file.exists())
+        if(!file.exists())  //If file does not exist, will create file in current directory
         {
-            qCritical() << "File not found";
-            QMessageBox::warning(this, "File Error", "File not found -og 2");
-            return;
+            if (!file.open(QIODevice::ReadWrite))
+                qWarning("Cannot create the file");
+            file.close();
         }
 
-        if(!file.open(QIODevice::WriteOnly))
+        if(!file.open(QIODevice::WriteOnly))  //If file is not opened give error
         {
             qCritical() << file.errorString();
             return;
@@ -222,14 +212,14 @@ void edit_book_screen::on_pushButton_submit_clicked()
 
         QTextStream stream(&file);
 
-        if(!tempFile.exists())
+        if(!tempFile.exists())  //If file does not exist, will create file in current directory
         {
-            qCritical() << "File not found";
-            QMessageBox::warning(this, "File Error", "File not found -temp 2");
-            return;
+            if (!tempFile.open(QIODevice::ReadWrite))
+                qWarning("Cannot create the file");
+            tempFile.close();
         }
 
-        if(!tempFile.open(QIODevice::ReadOnly))
+        if(!tempFile.open(QIODevice::ReadOnly))  //If file is not opened give error
         {
             qCritical() << tempFile.errorString();
             return;
@@ -241,13 +231,16 @@ void edit_book_screen::on_pushButton_submit_clicked()
 
             stream << line;
 
-            QMessageBox::information(this, "Title", "Info entered into orig file");
-
         }
 
         file.close();
         tempFile.close();
 
+        QMessageBox::information(this, "Details", "Book updated successfully");
+
+    } else {
+
+        QMessageBox::information(this, "Details", "Please enter a new title and author before submitting");
     }
 }
 
