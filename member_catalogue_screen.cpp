@@ -160,6 +160,7 @@ member_catalogue_screen::member_catalogue_screen(QWidget *parent) :
                 book_btn->setGeometry((book_btn_X + img_offset_X), (book_btn_Y + offset_Y), defW, 85);
 
                 book_btn->setFlat(true);
+                book_btn->setCursor(Qt::PointingHandCursor);
 
                 //Connect book button signal and slot
                 QString book_view_info = id + "," + newBook.getCoverImgRef();

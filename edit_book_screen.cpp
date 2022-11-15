@@ -242,5 +242,8 @@ void edit_book_screen::on_pushButton_submit_clicked()
 
         QMessageBox::information(this, "Details", "Please enter a new title and author before submitting");
     }
+
+    ui->lineEdit_newTitle->clear();
+    ui->lineEdit_newAuthor->clear();
 }
 

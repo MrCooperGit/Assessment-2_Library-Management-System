@@ -1,8 +1,10 @@
 #include "edit_member_screen.h"
+#include "add_new_member_screen.h"
 #include "ui_edit_member_screen.h"
 #include "classes.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
+#include "add_new_book_screen.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -197,6 +199,14 @@ void edit_member_screen::on_pushButton_home_clicked()
 void edit_member_screen::on_pushButton_catalogue_clicked()
 {
     admin_catalogue_screen *ptr = new class admin_catalogue_screen;
+    ptr->show();
+    close();
+}
+
+
+void edit_member_screen::on_pushButton_catalogue_3_clicked()
+{
+    add_new_member_screen *ptr = new add_new_member_screen;
     ptr->show();
     close();
 }
