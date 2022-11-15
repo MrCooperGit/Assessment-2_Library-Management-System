@@ -209,7 +209,7 @@ void LoginWindow::on_pushButton_register_clicked()
 
 void LoginWindow::on_pushButton_temp_clicked()
 {
-    your_items_screen *ptr = new your_items_screen;
+    admin_catalogue_screen *ptr = new admin_catalogue_screen;
     ptr->show();
     close();
 }

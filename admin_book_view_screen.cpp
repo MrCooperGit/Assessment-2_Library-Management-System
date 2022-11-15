@@ -80,6 +80,8 @@ admin_book_view_screen::admin_book_view_screen(QString bookInfo, QWidget *parent
     ui->label_bookAuthor->setText(targetBook.getAuthor());
     ui->label_bookID->setText(passedID);
 
+
+
     QPixmap pix2(targetBook.getCoverImgRef());
     int w2 = ui->label_bookImg->width();
     int h2 = ui->label_bookImg->height();

@@ -5,6 +5,7 @@
 #include "add_new_book_screen.h"
 #include "edit_book_screen.h"
 #include "admin_book_view_screen.h"
+#include "edit_member_screen.h"
 #include "classes.h"
 
 
@@ -217,8 +218,6 @@ admin_catalogue_screen::admin_catalogue_screen(QWidget *parent) :
 
                 ui->scrollArea->verticalScrollBarPolicy();
 
-                label_title->layoutDirection();
-
                 widget->setMinimumHeight(defY);
 
                 ui->scrollArea->setWidget(widget);
@@ -429,7 +428,7 @@ void admin_catalogue_screen::book_btn_clicked(QString bookInfo){
 
 void admin_catalogue_screen::on_pushButton_modifyMembers_clicked()
 {
-    edit_member_screen *ptr = new class edit_member_screen;
+    edit_member_screen *ptr = new edit_member_screen;
     ptr->show();
     close();
 }
