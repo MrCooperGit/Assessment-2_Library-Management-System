@@ -103,13 +103,11 @@ LoginWindow::LoginWindow(QWidget *parent)
         date = fileList[3];
         if (date.contains("\n")) date.chop(1); //remove \n from last word in line
         if (date.contains("\r")) date.chop(1); //remove \r from last word in line
-qInfo() << fileBookId << newBook.getTitle() << fileUserId << date;
 
         //Compare current date with due dates from file
         QDate currentDate = QDate::currentDate(), fileDate;
         fileDate = QDate::fromString(date, "dd/MM/yyyy");
         int num = currentDate.daysTo(fileDate);
-qInfo() << num;
 
         //If book is due within 3 days, write in dueSoon.csv
         if(num >= 0 && num <= 3){
