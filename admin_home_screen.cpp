@@ -38,16 +38,16 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
 
     //Setting button icons
     ui->pushButton->setIcon(QIcon(":/img/menu.label1.png"));
-    ui->pushButton->setIconSize(QSize(190,130));
+    ui->pushButton->setIconSize(QSize(210,150));
 
     ui->pushButton_2->setIcon(QIcon(":/img/menu.label2.png"));
-    ui->pushButton_2->setIconSize(QSize(190,130));
+    ui->pushButton_2->setIconSize(QSize(210,150));
 
     ui->pushButton_3->setIcon(QIcon(":/img/menu.label3.png"));
-    ui->pushButton_3->setIconSize(QSize(190,130));
+    ui->pushButton_3->setIconSize(QSize(210,150));
 
     ui->pushButton_4->setIcon(QIcon(":/img/menu.label4.png"));
-    ui->pushButton_4->setIconSize(QSize(190,130));
+    ui->pushButton_4->setIconSize(QSize(210,150));
 
     ui->label_username->setText(User::userName);
 }
