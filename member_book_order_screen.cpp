@@ -146,7 +146,7 @@ void member_book_order_screen::on_pushButton_order_clicked()
 
         QStringList list = line.split(",");
 
-        QString targetBookID = list[2];
+        QString targetBookID = list[0];
 
         if (targetBookID == _passedID){
             orderPlaced = true;
@@ -162,8 +162,6 @@ void member_book_order_screen::on_pushButton_order_clicked()
 
     if(!orderPlaced){
 
-        QMessageBox::information(this, "Details", "Order placed successfully");
-
         if(!file.exists())  //If file does not exist, will create file in current directory
         {
             if (!file.open(QIODevice::ReadWrite))
@@ -177,17 +175,16 @@ void member_book_order_screen::on_pushButton_order_clicked()
             return;
         }
 
-            int userID = User::getUserId();
-
             QDate dueDate;
             dueDate = dueDate.currentDate().addDays(14);
             QString strDueDate = dueDate.toString("dd/MM/yyyy");
 
             QTextStream stream(&file);
 
-            stream << userID << "," << targetBook.getTitle() << "," << _passedID << "," << strDueDate << "\n";
+            stream << _passedID << "," << targetBook.getTitle() << "," << User::iD << "," << strDueDate << "\n";
 
             file.close();
+            QMessageBox::information(this, "Details", "Order placed successfully");
 
     } else if(orderPlaced){
 
