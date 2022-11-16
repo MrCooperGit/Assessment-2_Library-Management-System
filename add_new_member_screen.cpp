@@ -106,7 +106,7 @@ void add_new_member_screen::on_pushButton_submit_clicked()
 
         file.close();
 
-        QMessageBox::information(this, "Details", "Item added successfully"); //displays message box showing success
+        QMessageBox::information(this, "Details", "Member added successfully"); //displays message box showing success
 
         //Clear the fields
         ui->lineEdit_firstName->clear();
