@@ -76,10 +76,11 @@ your_items_screen::your_items_screen(QWidget *parent) :
         fileList = line.split(",");
 
         //Transfer data from file into variables
-        newBook.setTitle(fileList.value(fileList.length()-3));
-        fileUserId = fileList.value(fileList.length()-2);
-        date = fileList.value(fileList.length()-1);
-        date.chop(2); //remove \r\n from last word in line
+        newBook.setTitle(fileList[1]);
+        fileUserId = fileList[2];
+        date = fileList[3];
+        if (date.contains("\n")) date.chop(1); //remove \n from last word in line
+        if (date.contains("\r")) date.chop(1); //remove \r from last word in line
 
         //Compare current date with due dates from file
         QDate currentDate = QDate::currentDate(), fileDate;

@@ -4,7 +4,6 @@
 #include "classes.h"
 #include "admin_home_screen.h"
 #include "admin_catalogue_screen.h"
-#include "add_new_book_screen.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -12,7 +11,7 @@
 #include <QSqlError>
 #include <QDir>
 #include <QSqlQueryModel>
-
+#include <QDebug>
 
 edit_member_screen::edit_member_screen(QWidget *parent) :
     QWidget(parent),
@@ -48,7 +47,7 @@ edit_member_screen::edit_member_screen(QWidget *parent) :
              "firstName string, lastName string, userType string,"
              "password string)");
 
-    qry.exec("DELETE FROM users"); //clear database before copying .csv file
+    qry.exec("DELETE FROM users"); //clear database before copying from .csv file
 
     QDir current;
     QString currentPath = current.currentPath(); //create string of current directory
@@ -82,21 +81,20 @@ edit_member_screen::edit_member_screen(QWidget *parent) :
         idNumber = list[1];
 
         //removes '\r\n' from password
-        if (password.contains("\r\n")) password.chop(2);
+        if (password.contains("\n")) password.chop(1);
+        if (password.contains("\r")) password.chop(1);
         qDebug() << email << idNumber << firstName << lastName << userType << password ;
 
-        //if statement to include only 'members'
-        if (userType == "member"){
-            qry.prepare("INSERT INTO users(email, idNumber,"
-                        "firstName, lastName, userType,"
-                        "password) VALUES('"+email+"', '"+idNumber+"', '"+firstName+"', '"+lastName+"',"
-                        "'"+userType+"', '"+password+"')");
-
-            if(!qry.exec()){
-                qDebug() << qry.lastError().text();
-            }
+        //inserts values into the database
+        qry.prepare("INSERT INTO users(email, idNumber,"
+                    "firstName, lastName, userType,"
+                    "password) VALUES('"+email+"', '"+idNumber+"', '"+firstName+"', '"+lastName+"',"
+                    "'"+userType+"', '"+password+"')");
+        if(!qry.exec()){
+            qDebug() << qry.lastError().text();
         }
     }
+    file.close();
     connClose();
 
 
@@ -105,7 +103,7 @@ edit_member_screen::edit_member_screen(QWidget *parent) :
     connOpen();
     QSqlQuery * query = new QSqlQuery(mydb);
 
-    query->prepare("SELECT email,idNumber,firstName,lastName FROM users"); //if you don't want to display all
+    query->prepare("SELECT email,idNumber,firstName,lastName FROM users WHERE userType = 'member'"); //if you don't want to display all
     //then change '*' to column names separated by comma's
     query->exec();
     model->setQuery(*query);
@@ -143,21 +141,25 @@ void edit_member_screen::on_pushButton_save_clicked()
         //Update table display with updated database
         QSqlQueryModel * model = new QSqlQueryModel();
         QSqlQuery * query = new QSqlQuery(mydb);
-        query->prepare("SELECT email,idNumber,firstName,lastName FROM users"); //if you don't want to display all
+        query->prepare("SELECT email,idNumber,firstName,lastName FROM users WHERE userType = 'member'"); //if you don't want to display all
         //then change '*' to column names separated by comma's
         query->exec();
         model->setQuery(*query);
         ui->tableView->setModel(model);
-
-        ui->lineEdit_email->clear();
-        ui->lineEdit_firstName->clear();
-        ui->lineEdit_lastName->clear();
 
         connClose();
     }else{
         QMessageBox::critical(this, tr("Error"), qry.lastError().text());
         connClose();
     }
+
+    //Write the updated details back to users.csv
+    queryToCsv();
+
+    //clear the lineEdits
+    ui->lineEdit_email->clear();
+    ui->lineEdit_firstName->clear();
+    ui->lineEdit_lastName->clear();
 }
 
 
@@ -175,10 +177,13 @@ void edit_member_screen::on_tableView_activated(const QModelIndex &index)
     if(qry.exec()){
         while(qry.next()){
             ui->label_email->setText(qry.value(0).toString());
+            ui->lineEdit_email->setText(qry.value(0).toString());
             ui->label_idNumber->setText(qry.value(1).toString());
             ui->label_idNumber2->setText(qry.value(1).toString());
             ui->label_firstName->setText(qry.value(2).toString());
+            ui->lineEdit_firstName->setText(qry.value(2).toString());
             ui->label_lastName->setText(qry.value(3).toString());
+            ui->lineEdit_lastName->setText(qry.value(3).toString());
         }
         connClose();
     }else{
