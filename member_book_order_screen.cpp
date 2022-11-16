@@ -162,6 +162,7 @@ void member_book_order_screen::on_pushButton_order_clicked()
 
 
     if(!orderPlaced){
+    
         if(!file.exists())  //If file does not exist, will create file in current directory
         {
             if (!file.open(QIODevice::ReadWrite))
