@@ -186,12 +186,43 @@ border: 2px solid #000000;
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>605</width>
+      <width>602</width>
       <height>389</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_yourItems">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>10</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Italic Outline Art</family>
+     <pointsize>12</pointsize>
+     <bold>false</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: 0;
+border-radius: 15px;
+border-color: 0;
+color: #3366CC;
+</string>
+   </property>
+   <property name="text">
+    <string>Your Items</string>
+   </property>
   </widget>
  </widget>
  <resources/>

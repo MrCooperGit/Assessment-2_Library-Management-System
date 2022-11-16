@@ -70,6 +70,7 @@ member_book_order_screen::member_book_order_screen(QString memberInfo, QWidget *
         //Transfer data from file into variables
         id = fileList[0];
 
+
         //If the id passed to this window matches an id in the file
         if (_passedID == id){
 
@@ -86,7 +87,7 @@ member_book_order_screen::member_book_order_screen(QString memberInfo, QWidget *
 
     ui->label_bookTitle->setText(targetBook.getTitle());
     ui->label_author->setText(targetBook.getAuthor());
-    ui->label_id->setText(id);
+    ui->label_id->setText("Book ID: " + _passedID);
 
     QPixmap pix2(targetBook.getCoverImgRef());
     int w2 = ui->label->width();
@@ -161,7 +162,7 @@ void member_book_order_screen::on_pushButton_order_clicked()
 
 
     if(!orderPlaced){
-
+    
         if(!file.exists())  //If file does not exist, will create file in current directory
         {
             if (!file.open(QIODevice::ReadWrite))
@@ -190,8 +191,5 @@ void member_book_order_screen::on_pushButton_order_clicked()
 
         QMessageBox::information(this, "Details", "This book has already been ordered");
     }
-
-
-
 }
 
