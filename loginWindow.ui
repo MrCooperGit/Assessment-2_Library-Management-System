@@ -198,19 +198,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_temp">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>510</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TempButton</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_date">
     <property name="geometry">
      <rect>
