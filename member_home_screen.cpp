@@ -16,9 +16,11 @@ member_home_screen::member_home_screen(QWidget *parent) :
     //Setting button images
     QIcon button1_icon("://img/menu.label1.png");
     ui->button_img_1->setIcon(button1_icon);
+    ui->button_img_1->setFlat(true);
 
     QIcon button2_icon("://img/menu.label2.png");
     ui->button_img_2->setIcon(button2_icon);
+    ui->button_img_2->setFlat(true);
 
     //Setting logo images
     QPixmap headerlogo_pix("://img/homescreen-label.PNG");
@@ -33,7 +35,7 @@ member_home_screen::member_home_screen(QWidget *parent) :
     ui->label_img_2->setPixmap(footerlogo_pix.scaled(w,h, Qt::KeepAspectRatio));
 
     //construct username in top right corner
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 }
 
 member_home_screen::~member_home_screen()
@@ -44,12 +46,13 @@ member_home_screen::~member_home_screen()
 //Home screen navigation to other screens
 
 //Navigate to member catalogue screen / view catalogue screen
-void member_home_screen::on_pushButton_clicked()
+void member_home_screen::on_pushButton_viewCatalogue_clicked()
 {
     member_catalogue_screen *_member_catalogue_screen = new member_catalogue_screen;
     _member_catalogue_screen->show();
     close();
 }
+
 void member_home_screen::on_button_img_1_clicked()
 {
     member_catalogue_screen *_member_catalogue_screen = new member_catalogue_screen;
@@ -58,16 +61,23 @@ void member_home_screen::on_button_img_1_clicked()
 }
 
 //Navigate to your items screen
-void member_home_screen::on_pushButton_2_clicked()
+void member_home_screen::on_pushButton_yourItems_clicked()
 {
     your_items_screen *_your_items_screen = new your_items_screen;
     _your_items_screen->show();
     close();
 }
+
 void member_home_screen::on_button_img_2_clicked()
 {
     your_items_screen *_your_items_screen = new your_items_screen;
     _your_items_screen->show();
     close();
 }
+
+
+
+
+
+
 

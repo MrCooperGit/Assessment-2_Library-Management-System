@@ -6,7 +6,6 @@
 #include <QTextStream>
 
 
-
 //Counts the number of lines in file and returns it as static int for userId
 int User::getUserId(){
     QDir current;
@@ -27,14 +26,6 @@ int User::getUserId(){
     return iD + 10001;
 }
 
-QString User::userName(){
-    return User::firstName + " " + User::lastName;
-}
-
-void User::setName(QString fName, QString lName){
-    User::firstName = fName;
-    User::lastName = lName;
-}
 
 int Item::getItemId(){
     QDir current;
@@ -54,3 +45,4 @@ int Item::getItemId(){
     file.close();
     return iD + 10001;
 }
+

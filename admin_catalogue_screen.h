@@ -29,7 +29,7 @@ private slots:
 
     void edit_btn_clicked(QString);
 
-    void book_btn_clicked();
+    void book_btn_clicked(QString);
 
 private:
     Ui::admin_catalogue_screen *ui;

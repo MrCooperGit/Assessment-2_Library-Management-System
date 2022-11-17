@@ -16,13 +16,14 @@ public:
     ~member_home_screen();
 
 private slots:
-    void on_pushButton_clicked();
 
     void on_button_img_1_clicked();
 
-    void on_pushButton_2_clicked();
-
     void on_button_img_2_clicked();
+
+    void on_pushButton_viewCatalogue_clicked();
+
+    void on_pushButton_yourItems_clicked();
 
 private:
     Ui::member_home_screen *ui;

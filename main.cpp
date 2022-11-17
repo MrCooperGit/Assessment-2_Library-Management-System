@@ -6,7 +6,7 @@
 
 int User::iD = 0;
 int Item::iD = 0;
-QString User::firstName, User::lastName;
+QString User::userName;
 
 
 int main(int argc, char *argv[])

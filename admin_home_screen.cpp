@@ -3,7 +3,7 @@
 #include "add_new_book_screen.h"
 #include "admin_catalogue_screen.h"
 #include "add_new_member_screen.h"
-#include "member_list_screen.h"
+#include "edit_member_screen.h"
 #include "classes.h"
 
 #include <QPixmap>
@@ -38,18 +38,18 @@ admin_home_screen::admin_home_screen(QWidget *parent) :
 
     //Setting button icons
     ui->pushButton->setIcon(QIcon(":/img/menu.label1.png"));
-    ui->pushButton->setIconSize(QSize(190,130));
+    ui->pushButton->setIconSize(QSize(210,150));
 
     ui->pushButton_2->setIcon(QIcon(":/img/menu.label2.png"));
-    ui->pushButton_2->setIconSize(QSize(190,130));
+    ui->pushButton_2->setIconSize(QSize(210,150));
 
     ui->pushButton_3->setIcon(QIcon(":/img/menu.label3.png"));
-    ui->pushButton_3->setIconSize(QSize(190,130));
+    ui->pushButton_3->setIconSize(QSize(210,150));
 
     ui->pushButton_4->setIcon(QIcon(":/img/menu.label4.png"));
-    ui->pushButton_4->setIconSize(QSize(190,130));
+    ui->pushButton_4->setIconSize(QSize(210,150));
 
-    ui->label_username->setText(User::userName());
+    ui->label_username->setText(User::userName);
 }
 
 admin_home_screen::~admin_home_screen()
@@ -110,7 +110,7 @@ void admin_home_screen::on_pushButton_addNewMember_clicked()
 
 void admin_home_screen::on_pushButton_4_clicked()
 {
-    member_list_screen *ptr = new class member_list_screen;
+    edit_member_screen *ptr = new edit_member_screen;
     ptr->show();
     close();
 }
@@ -118,7 +118,7 @@ void admin_home_screen::on_pushButton_4_clicked()
 
 void admin_home_screen::on_pushButton_modifyMember_clicked()
 {
-    member_list_screen *ptr = new class member_list_screen;
+    edit_member_screen *ptr = new class edit_member_screen;
     ptr->show();
     close();
 }

@@ -12,7 +12,7 @@ class member_book_order_screen : public QWidget
     Q_OBJECT
 
 public:
-    explicit member_book_order_screen(QWidget *parent = nullptr);
+    explicit member_book_order_screen(QString memberInfo, QWidget *parent = nullptr);
     ~member_book_order_screen();
 
 private slots:
