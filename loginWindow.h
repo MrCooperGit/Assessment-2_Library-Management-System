@@ -25,7 +25,7 @@ private slots:
 
     void on_pushButton_login_clicked();
 
-    void on_lineEdit_email_cursorPositionChanged(int arg1, int arg2);
+    void on_radioButton_admin_clicked();
 
 private:
     Ui::LoginWindow *ui;
