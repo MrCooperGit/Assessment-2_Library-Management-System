@@ -243,6 +243,12 @@ void edit_book_screen::on_pushButton_submit_clicked()
         QMessageBox::information(this, "Details", "Please enter a new title and author before submitting");
     }
 
+    //Remove tempBooks.csv from directory
+    QDir current2;
+    QString currentPath2 = current2.currentPath(); //create string of current directory
+    QDir dir2(currentPath2); //QDir variable becomes current directory
+    dir2.remove("tempBooks.csv");
+
     ui->lineEdit_newTitle->clear();
     ui->lineEdit_newAuthor->clear();
 }
