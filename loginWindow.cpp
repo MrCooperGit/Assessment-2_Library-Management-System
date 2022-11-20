@@ -173,11 +173,9 @@ void LoginWindow::on_pushButton_login_clicked()
         return;
     }
 
-    //QTextStream stream(&file);
     QString email, password, firstName, lastName, userId;
     while (!file.atEnd()){
         QString line = file.readLine(); //place line into string
-qInfo() << line;
         //empty the variables before each loop
         email.clear();
         password.clear();
@@ -201,9 +199,7 @@ qInfo() << line;
         //the compare() function returns 0 if strings are the same
         int validateEmail, validatePass;
         validateEmail = loginEmail.compare(email);
-qInfo() << "Validate Email: " << validateEmail;
         validatePass = loginPassword.compare(password);
-qInfo() << "Validate Password: " << validatePass;
 
         if(validateEmail==0 && validatePass==0){
 
