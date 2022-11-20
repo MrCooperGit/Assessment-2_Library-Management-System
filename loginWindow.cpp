@@ -301,7 +301,8 @@ void LoginWindow::on_pushButton_register_clicked()
     QMessageBox::critical(this, "Critical", "Please ensure all fields are entered!");
 }
 
-void LoginWindow::on_lineEdit_email_cursorPositionChanged(int arg1, int arg2)
+
+void LoginWindow::on_radioButton_admin_clicked()
 {
     QMessageBox::information(this,"Information","The register function is displayed here with a radio button to choose\n"
                                                 "'member' or 'admin' for testing/marking purposes only.\n"
