@@ -79,6 +79,7 @@ your_items_screen::your_items_screen(QWidget *parent) :
         newBook.setTitle(fileList[1]);
         fileUserId = fileList[2];
         date = fileList[3];
+
         if (date.contains("\n")) date.chop(1); //remove \n from last word in line
         if (date.contains("\r")) date.chop(1); //remove \r from last word in line
 
